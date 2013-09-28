@@ -16,7 +16,6 @@ public class Problem244 {
 		Node x = bestFirstSearch();
 		System.out.println(x.sequence);
 		System.out.println(checksum(x.sequence) + " " + t);
-		// 3 8 15 24 35 48 63 80 99 120 143 168
 	}
 	
 	private static long checksum(String string) {
