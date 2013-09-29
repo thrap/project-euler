@@ -183,7 +183,7 @@ public class Problem161BaseCase {
 	
 	public static void main(String[] args) {
 		T t = new T();
-		char[][] board = new char[4][12];
+		char[][] board = new char[9][2];
 		for (int i = 0; i < board.length; i++) {
 			Arrays.fill(board[i], Board.BLANK);
 		}
@@ -200,15 +200,8 @@ public class Problem161BaseCase {
 		if (children.size() == 0) {
 			if (b.isFilled()) {
 				count++;
-				if (count % 100000 == 0) {
-					b.printBoard();
-					System.out.println(count);
-				}
-			} else { 
-				/** 
-				 * tror disse er det du burde se pŒ
-				 */
-//				b.printBoard();
+				b.printBoard();
+				System.out.println(count);
 			}
 		}
 		for (Board child : children) {
