@@ -1,6 +1,8 @@
 package problems;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
 
 import utils.Euler;
 
@@ -20,9 +22,12 @@ public class Problem182 {
 				BigInteger bigE = BigInteger.valueOf(e);
 				int d = modInv(e,phi);
 				int unconcealed = 0;
+				
+				List<Integer> ms = new ArrayList<Integer>();
 				for (int m = 0; m < n; m++) {
 					if (BigInteger.valueOf(m).modPow(bigE, bigN).intValue() == m) {
 						unconcealed++;
+						ms.add(m);
 						if (min < unconcealed)
 							break;
 					} 
@@ -30,7 +35,7 @@ public class Problem182 {
 				min = Math.min(unconcealed, min);
 				if (unconcealed == min) {
 					System.out.println(Euler.primeFactorList(e));
-					System.out.println(e + ": "+unconcealed + " " + d);
+					System.out.println(e + ": "+unconcealed + " " + ms);
 				}
 			}
 		}
