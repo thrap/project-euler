@@ -2,6 +2,7 @@ package problems;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.BitSet;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -173,14 +174,14 @@ public class Problem161 {
 			return true;
 		}
 		
-		public String getBitString() {
-			StringBuilder sb = new StringBuilder();
+		public BitSet getBitSet() {
+			BitSet bs = new BitSet(free.length*free[0].length);
 			for (int i = 0; i < free.length; i++) {
 				for (int j = 0; j < free[0].length; j++) {
-					sb.append((free[i][j]?0:1));
+					bs.set(i*free[0].length+j, free[i][j]);
 				}
 			}
-			return sb.toString();
+			return bs;
 		}
 	}
 
@@ -201,11 +202,10 @@ public class Problem161 {
 		System.out.println("Total count: " + sum + " " + t);
 	}
 
-	static Map<String, Long> memoize = new HashMap<String, Long>();
+	static Map<BitSet, Long> memoize = new HashMap<BitSet, Long>();
 	
 	private static long reccurse(Board b) {
-		
-		String memo = b.getBitString();
+		BitSet memo = b.getBitSet();
 
 		if (memoize.containsKey(memo))
 			return memoize.get(memo);
