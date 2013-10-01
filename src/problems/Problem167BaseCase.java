@@ -13,16 +13,14 @@ public class Problem167BaseCase {
 		 */
 		
 		for (int n = 2; n <= 10; n++) {
-			List<Integer> Us = getFirstUs(2, 2*n+1, 100);
+			List<Integer> Us = Us(2, 2*n+1, 100);
 			
 			System.out.println(Us.get(0));
 			System.out.println(Us);
-			
-			break;
 		}
 	}
 	
-	public static List<Integer> getFirstUs(int a, int b, int count) {
+	public static List<Integer> Us(int a, int b, int count) {
 		List<Integer> list = new ArrayList<Integer>();
 		list.add(a);
 		list.add(b);
