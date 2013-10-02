@@ -7,6 +7,9 @@ public class Problem375BaseCase {
 	public static void main(String[] args) {
 		T t = new T();
 		int N = 10000;
+		/**
+		 * Sn for n=1,2,.. er periodisk med periode 6308949
+		 */
 		S = new long[N+1];
 		S[0] = 290797;
 		for (int i = 1; i < S.length; i++) {
