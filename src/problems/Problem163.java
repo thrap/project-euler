@@ -3,6 +3,8 @@ package problems;
 import java.util.ArrayList;
 import java.util.List;
 
+import utils.T;
+
 public class Problem163 {
 	
 	private static enum Color {
@@ -64,50 +66,56 @@ public class Problem163 {
 			return "("+x + ", "+y+")";
 		}
 
-		public void addRed(Point tuple) {
-			lines.add(new Line(tuple, Color.RED));
+		public void addRed(Point p) {
+			lines.add(new Line(p, Color.RED));
 		}
 
-		public void addBlack(Point tuple) {
-			lines.add(new Line(tuple, Color.BLACK));
+		public void addBlack(Point p) {
+			lines.add(new Line(p, Color.BLACK));
 		}
 
-		public void addGreen(Point tuple) {
-			lines.add(new Line(tuple, Color.GREEN));
+		public void addGreen(Point p) {
+			while(p.x - 6 >= 0 && p.y - 4 >= 0) {
+				p.x -= 6;
+				p.y -= 4;
+			}
+			lines.add(new Line(p, Color.GREEN));
 		}
 
-		public void addPink(Point tuple) {
-			lines.add(new Line(tuple, Color.PINK));
+		public void addPink(Point p) {
+			while(p.x + 6 <= 4*n && p.y - 4 >= 0) {
+				p.x += 6;
+				p.y -= 4;
+			}
+			lines.add(new Line(p, Color.PINK));
 		}
 
-		public void addOrange(Point tuple) {
-			lines.add(new Line(tuple, Color.ORANGE));
+		public void addOrange(Point p) {
+			while(p.x + 2 <= 4*n && p.y - 4 >= 0) {
+				p.x += 2;
+				p.y -= 4;
+			}
+			lines.add(new Line(p, Color.ORANGE));
 		}
 
-		public void addBlue(Point tuple) {
-			lines.add(new Line(tuple, Color.BLUE));
+		public void addBlue(Point p) {
+			while(p.x -2 >= 0 && p.y - 4 >= 0) {
+				p.x -= 2;
+				p.y -= 4;
+			}
+			lines.add(new Line(p, Color.BLUE));
 		}
 	}
+	
+	static int n = 36;
 	public static void main(String[] args) {
-		int n = 36;
-		List<Tuple> list = getTupleList(n);
-		
-		for (Tuple tuple : list) {
-			System.out.println(tuple);
-			System.out.println(tuple.lines);
-		}
-		
-//		System.exit(0);
-		
-		/**
-		 * mangler:
-		 * (0, 0) (2, 1) (1, 2)
-		 * (0, 0) (4, 0) (1, 2)
-		 */
+		T t = new T();
+		List<Tuple> list = getTupleList();
 		
 		long count = 0;
 		for (int i = 0; i < list.size(); i++) {
-			System.out.println(i);
+			if (i % 50 == 0)
+				System.out.println(i + " / " + list.size());
 			Tuple a = list.get(i);
 			for (int j = i+1; j < list.size(); j++) {
 				Tuple b = list.get(j);
@@ -141,9 +149,9 @@ public class Problem163 {
 				}
 			}
 		}
-		System.out.println(count);
+		System.out.println(count + " " + t);
 	}
-	private static List<Tuple> getTupleList(int n) {
+	private static List<Tuple> getTupleList() {
 		List<Tuple> list = new ArrayList<Tuple>();
 		
 		Tuple firstTuple = new Tuple(n*2, n*HEIGHT);
@@ -157,144 +165,62 @@ public class Problem163 {
 			int startY = (n-triangles)*HEIGHT;
 			int startX = (n-triangles)*2;
 			int endX = n*4 - (n-triangles)*2;
-			System.out.println(startY + " " + startX + " " + endX);
 			for (int i = 0; i < HEIGHT; i++) {
 				int y = startY + i;
-				
-				if (y % HEIGHT == 0) {
-					for (int x = startX; x <= endX; x+= 2) {
-						Tuple tuple = new Tuple(x, y);
-						tuple.addRed(new Point(startX, startY));
-						tuple.addBlack(new Point(x, 0));
-						if (x % 4 == startX % 4) {
-							int greenStartX = x;
-							int greenStartY = y;
-							while(greenStartX - 6 >= 0 && greenStartY - 4 >= 0) {
-								greenStartX -= 6;
-								greenStartY -= 4;
-							}
-							tuple.addGreen(new Point(greenStartX, greenStartY));
-							
-							int pinkStartX = x;
-							int pinkStartY = y;
-							while(pinkStartX + 6 <= 4*n && pinkStartY - 4 >= 0) {
-								pinkStartX += 6;
-								pinkStartY -= 4;
-							}
-							tuple.addPink(new Point(pinkStartX, pinkStartY));
-							
-							int blueStartX = x;
-							int blueStartY = y;
-							while(blueStartX -2 >= 0 && blueStartY - 4 >= 0) {
-								blueStartX -= 2;
-								blueStartY -= 4;
-							}
-							tuple.addBlue(new Point(blueStartX, blueStartY));
-							
-							/**
-							 * (2, 4): orange blir (2, 4)?
-							 */
-							int orangeStartX = x;
-							int orangeStartY = y;
-							if (x == 2 && y == 4) {
-								System.out.println(orangeStartX + " " + orangeStartY);
-							}
-							while(orangeStartX + 2 <= 4*n && orangeStartY - 4 >= 0) {
-								orangeStartX += 2;
-								orangeStartY -= 4;
-							}
-							tuple.addOrange(new Point(orangeStartX, orangeStartY));
-						} 
-						list.add(tuple);
-					}
-				} else if (y % HEIGHT == 1) {
-					for (int x = startX + 2; x <= endX-2; x+=4) {
-						Tuple tuple = new Tuple(x, y);
-						tuple.addBlack(new Point(x, 0));
-						
-						int greenStartX = x-2;
-						int greenStartY = y-1;
-						while(greenStartX - 6 >= 0 && greenStartY - 4 >= 0) {
-							greenStartX -= 6;
-							greenStartY -= 4;
-						}
-						tuple.addGreen(new Point(greenStartX, greenStartY));
-						
-						int pinkStartX = x+2;
-						int pinkStartY = y-1;
-						while(pinkStartX + 6 <= 4*n && pinkStartY - 4 >= 0) {
-							pinkStartX += 6;
-							pinkStartY -= 4;
-						}
-						tuple.addPink(new Point(pinkStartX, pinkStartY));
-						
-						list.add(tuple);
-					}
-				} else if (y % HEIGHT == 2) {
-					for (int x = startX+1; x <= endX-1; x+=2) {
-						Tuple tuple = new Tuple(x, y);
-						
-						if (x % 4 == (startX + 1) % 4) {
-							int blueStartX = x-1;
-							int blueStartY = y-2;
-							while(blueStartX -2 >= 0 && blueStartY - 4 >= 0) {
-								blueStartX -= 2;
-								blueStartY -= 4;
-							}
-							tuple.addBlue(new Point(blueStartX, blueStartY));
-							
-							int pinkStartX = x+3;
-							int pinkStartY = y-2;
-							while(pinkStartX + 6 <= 4*n && pinkStartY - 4 >= 0) {
-								pinkStartX += 6;
-								pinkStartY -= 4;
-							}
-							tuple.addPink(new Point(pinkStartX, pinkStartY));
-						} else if (x % 4 == (startX + 3) % 4) {
-							int greenStartX = x-3;
-							int greenStartY = y-2;
-							while(greenStartX - 6 >= 0 && greenStartY - 4 >= 0) {
-								greenStartX -= 6;
-								greenStartY -= 4;
-							}
-							tuple.addGreen(new Point(greenStartX, greenStartY));
-							
-							int orangeStartX = x+1;
-							int orangeStartY = y-2;
-							while(orangeStartX + 2 <= 4*n && orangeStartY - 4 >= 0) {
-								orangeStartX += 2;
-								orangeStartY -= 4;
-							}
-							tuple.addOrange(new Point(orangeStartX, orangeStartY));
-						}
-						list.add(tuple);
-					}
-				} else if (y % HEIGHT == 3) {
-					for (int x = startX+4; x <= endX-4; x+=4) {
-						Tuple tuple = new Tuple(x, y);
-						tuple.addBlack(new Point(x, 0));
-						
-						int greenStartX = x+2;
-						int greenStartY = y+1;
-						while(greenStartX - 6 >= 0 && greenStartY - 4 >= 0) {
-							greenStartX -= 6;
-							greenStartY -= 4;
-						}
-						tuple.addGreen(new Point(greenStartX, greenStartY));
-						
-						int pinkStartX = x-2;
-						int pinkStartY = y+1;
-						while(pinkStartX + 6 <= 4*n && pinkStartY - 4 >= 0) {
-							pinkStartX += 6;
-							pinkStartY -= 4;
-						}
-						tuple.addPink(new Point(pinkStartX, pinkStartY));
-						
-						list.add(tuple);
-					}
+				switch(y % HEIGHT) {
+				case 0: addLayer0(list, startY, startX, endX, y); break;
+				case 1: addLayer1(list, startX, endX, y); break;
+				case 2: addLayer2(list, startX, endX, y); break;
+				case 3: addLayer3(list, startX, endX, y); break;
 				}
 			}
 		}
 		return list;
+	}
+	private static void addLayer3(List<Tuple> list, int startX, int endX, int y) {
+		for (int x = startX+4; x <= endX-4; x+=4) {
+			Tuple tuple = new Tuple(x, y);
+			tuple.addBlack(new Point(x, 0));
+			tuple.addGreen(new Point(x+2, y+1));
+			tuple.addPink(new Point(x-2, y+1));
+			list.add(tuple);
+		}
+	}
+	private static void addLayer2(List<Tuple> list, int startX, int endX, int y) {
+		for (int x = startX+1; x <= endX-1; x+=2) {
+			Tuple tuple = new Tuple(x, y);
+			if (x % 4 == (startX + 1) % 4) {
+				tuple.addBlue(new Point(x-1, y-2));
+				tuple.addPink(new Point(x+3, y-2));
+			} else if (x % 4 == (startX + 3) % 4) {
+				tuple.addGreen(new Point(x-3, y-2));
+				tuple.addOrange(new Point(x+1, y-2));
+			}
+			list.add(tuple);
+		}
+	}
+	private static void addLayer0(List<Tuple> list, int startY, int startX,
+			int endX, int y) {
+		for (int x = startX; x <= endX; x+= 2) {
+			Tuple tuple = new Tuple(x, y);
+			tuple.addRed(new Point(startX, startY));
+			tuple.addBlack(new Point(x, 0));
+			if (x % 4 == startX % 4) {
+				tuple.addGreen(new Point(x, y));
+				tuple.addPink(new Point(x, y));
+				tuple.addBlue(new Point(x, y));
+				tuple.addOrange(new Point(x, y));
+			} 
+			list.add(tuple);
+		}
+	}
+	private static void addLayer1(List<Tuple> list, int startX, int endX, int y) {
+		for (int x = startX + 2; x <= endX-2; x+=4) {
+			Tuple tuple = new Tuple(x, y);
+			tuple.addBlack(new Point(x, 0));
+			tuple.addGreen(new Point(x-2, y-1));
+			tuple.addPink(new Point(x+2, y-1));
+			list.add(tuple);
+		}
 	}
 }
