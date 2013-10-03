@@ -6,7 +6,7 @@ public class Problem375 {
 	private static final int PERIOD = 6308948;
 	static long[] S = new long[PERIOD];
 	static int[] minLength = new int[PERIOD];
- 	private static final int MIN_S = 3;
+ 	private static final long MIN_S = 3;
 	
 	static {
 		S[0] = 25388651;
@@ -36,15 +36,9 @@ public class Problem375 {
 
 	private static long M(int N) {
 		long sum = 0;
-		if (N < PERIOD) {
-			for (int i = 1; i <= N; i++) {
-				sum += m(N, i);
-			}
-			return sum;
-		}
 		for (int i = 1; i <= N; i++) {
 			if (i % 10000000 == 0)
-				System.out.println(i + "/"+N + " " + (double)i/N);
+				System.out.println((double)i*100/N + " % ferdig");
 			sum += m(N, i);
 		}
 		return sum;
@@ -54,8 +48,7 @@ public class Problem375 {
 		long sum = 0;
 		for (int j = i; j <= N; j+=minLength[j%PERIOD]) {
 			if(S[j%PERIOD] == MIN_S) {
-				sum += (N-j+1)*3L;
-				return sum;
+				return sum + (N-j+1)*MIN_S;
 			}
 			long length = Math.min(N-j+1, minLength[j%PERIOD]);
 			sum += length*S[j%PERIOD];
