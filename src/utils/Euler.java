@@ -423,7 +423,7 @@ public class Euler {
 	public static List<Integer> divisorList(int n) {
 		int limit = n;
 		ArrayList<Integer> divisors = new ArrayList<Integer>();
-		for (int i = 1; i < limit && i <= n/i; ++i) {
+		for (int i = 1; i <= limit && i <= n/i; ++i) {
 			if (n % i == 0) {
 				int d2 = n / i;
 				divisors.add(i);
