@@ -12,18 +12,18 @@ public class Problem157Test {
 		 */
 		
 		int n = 1;
-		
-		for (int a = 1; a <= 1000; a++) {
-			for (int b = a; b <= 100000; b++) {
-				if ((100*(a+b)) % (b*a) == 0) {
-					int test = a;
+		int count = 0;
+		for (long a = 1; a <= 100000; a++) {
+			for (long b = a; b <= 100000; b++) {
+				if ((1000*(a+b)) % (b*a) == 0) {
+					long test = a;
 					while(test % 5 == 0) {
 						test/=5;
 					}
 					while(test % 2 == 0) {
 						test/=2;
 					}
-					int tes2 = a;
+					long tes2 = a;
 					while(tes2 % 5 == 0) {
 						tes2/=5;
 					}
@@ -35,7 +35,7 @@ public class Problem157Test {
 						System.exit(0);
 					}
 					System.out.println(a + " " + b);
-					System.out.println(test + " " + tes2);
+					System.out.println(test + " " + tes2 + " (" + ++count+")");
 					if (Euler.isPrime(a) && a != 2 && a != 5 && b%a != 0) {
 						System.out.println("Fuck");
 						System.exit(0);

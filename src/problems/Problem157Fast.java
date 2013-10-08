@@ -1,5 +1,11 @@
 package problems;
 
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
+
+import utils.Euler;
+
 public class Problem157Fast {
 	public static void main(String[] args) {
 		/**
@@ -9,22 +15,35 @@ public class Problem157Fast {
 		//p = 2^n*5^n(a+b)/(b*a)
 		
 		int count = 0;
-		for (int i = 1; i <= 10000; i++) {
-			if (i % 2 == 0 || i % 5 == 0)
+		int N = 6;
+		Set<Integer> set = new TreeSet<Integer>();
+		for (int i = 1; i <= 1000000; i+=2) {
+			if (i % 5 == 0)
 				continue;
-			for (int a2s = 0; a2s < 15; a2s++) {
-				for (int a5s = 0; a5s < 15; a5s++) {
+			for (int a2s = 0; a2s <= N+1; a2s++) {
+				for (int a5s = 0; a5s <= N+1; a5s++) {
 					long a = (long) (i*Math.pow(2, a2s)*Math.pow(5, a5s));
-					for (int b2s = 0; b2s < 20; b2s++) {
-						for (int b5s = 0; b5s < 20; b5s++) {
+					for (int b2s = 0; b2s <= N+1; b2s++) {
+						for (int b5s = 0; b5s <= N+1; b5s++) {
 							long b = (long) (i*Math.pow(2, b2s)*Math.pow(5, b5s));
-							if (a > b)
+							if (a > b || b == Long.MAX_VALUE)
 								continue;
 							
-							if ((10000*(a+b)) % (a*b) == 0) {
-								System.out.println(i);
-								System.out.println(a + " " + b);
-								count++;
+							
+							for (int n = 1; n <= N; n++) {
+								if (((long)Math.pow(10, n)*(a+b)) % (a*b) == 0) {
+									count++;
+									if (!set.contains(i)) {
+										set.add(i);
+										/*System.out.println(i);
+										System.out.println(a + " " + b + " ("+count+")");
+										System.out.println(set.size());
+										System.out.println(Euler.primeFactorList(i));*/
+										System.out.println(i + " "+ (i-1)/2 + " " + Euler.primeFactorList(i-1));
+										
+//										System.out.println();
+									}
+								} 
 							}
 						}
 					}
@@ -32,5 +51,13 @@ public class Problem157Fast {
 			}
 		}
 		System.out.println(count);
+	}
+
+	private static int max(int... ints) {
+		int max = Integer.MIN_VALUE;
+		for (int i : ints) {
+			max = Math.max(max, i);
+		}
+		return max;
 	}
 }
