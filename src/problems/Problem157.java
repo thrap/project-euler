@@ -1,77 +1,83 @@
 package problems;
 
-import java.util.Comparator;
-import java.util.Map;
+import static java.math.BigInteger.TEN;
+import static java.math.BigInteger.ZERO;
+import static java.math.BigInteger.valueOf;
+
+import java.math.BigInteger;
 import java.util.Set;
 import java.util.TreeSet;
 
 import utils.Euler;
+import utils.T;
 
 public class Problem157 {
 	public static void main(String[] args) {
-		//10^n*(a+b) = p*b*a
-		//p = 2^n*5^n(a+b)/(b*a)
+		/**
+		 * 5001*(1+2^3*5^4)/5001^2
+		 * 
+		 * (1+2^4*5^6)/4717
+		 * 
+		 * (2^4+5^5)/3141
+		 * 
+		 * 10^n*(2^a*5^b + 2^c*5^d) / x er et heltall
+		 */
 		
-		//n=1 med min metode (lol omg):
-		//a=1, b=1
-		//a=1, b=2
-		//a=1, b=5
-		//a=1, b=10
-		//a=2, b=5
+		T t = new T();
+		int N = 9;
 		
-		//på n=1 er a=20 b=20 en gyldig løsning
-		//på n=2 er a=200 b=200 en gyldig løsning, loop nedover på a'er her?
-		int limit = 100000;
-		Set<String> set = new TreeSet<String>(new Comparator<String>() {
-
-			@Override
-			public int compare(String o1, String o2) {
-				String[] s1 = o1.split(" ");	
-				String[] s2 = o2.split(" ");
-				Integer i1 = Integer.valueOf(s1[0]);
-				Integer i2 = Integer.valueOf(s2[0]);
-				if (i1.compareTo(i2) == 0) {
-					if (Integer.valueOf(s1[1]).compareTo(Integer.valueOf(s2[1])) == 0) {
-						return Integer.valueOf(s1[2]).compareTo(Integer.valueOf(s2[2]));
-					} else {
-						return Integer.valueOf(s1[1]).compareTo(Integer.valueOf(s2[1]));
-					}
-				} else {
-					return i1.compareTo(i2);
-				}
-			}
-		});
-		for (int b = 1; b < limit; b++) {
-			for (int a = 1; a <= b; a++) {
-				Map<Integer, Integer> numerator = Euler.primeFactorMap(a+b);
-				Map<Integer, Integer> denominator = Euler.primeFactorMap(a,b);
-				boolean funker = true;
-				int trenger = 0;
-				for (Map.Entry<Integer, Integer> factor : denominator.entrySet()) {
-					int prime = factor.getKey();
-					int pow = factor.getValue();
-					if (!numerator.containsKey(prime))
-						numerator.put(prime, 0);
-							
-					if (numerator.get(prime) < pow) {
-						if (prime == 2 || prime == 5) {
-							trenger = Math.max(trenger, pow-numerator.get(prime));
-						} else {
-							funker = false;
-							break;
+		int matches = 0;
+		Set<Long> set = new TreeSet<Long>();
+		int limit = N+1;
+		for (int a = 0; a <= limit; a++) {
+			for (int b = 0; b <= limit; b++) {
+				for (int c = 0; c <= limit; c++) {
+					for (int d = 0; d <= limit; d++) {
+						long i = pow(2,a)*pow(5,b) +pow(2,c)*pow(5,d);
+						while(i%2 == 0)
+							i/=2;
+						while (i%5 == 0) 
+							i/=5;
+						for (long long1 : Euler.divisorList(i)) {
+							set.add(long1);
 						}
 					}
-				}
-				if (funker && trenger <= 3) {
-					set.add(trenger + " "+ a + " " + b);
-					for (String string : set) {
-						System.out.println(string);
-					}
-					System.out.println(set.size());
-					System.out.println(a + " " + b + " " + trenger);
 				}
 			}
 		}
 		
+
+		int iteration = 0;
+		for (long i: set) {
+			System.out.println(matches + " ("+(++iteration) + "/"+set.size()+")");
+			
+			for (int a2s = 0; a2s <= N+1; a2s++) {
+				for (int a5s = 0; a5s <= N+1; a5s++) {
+					BigInteger A = valueOf(i).multiply(valueOf(2).pow(a2s)).multiply(valueOf(5).pow(a5s));
+					for (int b2s = 0; b2s <= N+1; b2s++) {
+						for (int b5s = 0; b5s <= N+1; b5s++) {
+							BigInteger B = valueOf(i).multiply(valueOf(2).pow(b2s)).multiply(valueOf(5).pow(b5s));
+							if (A.compareTo(B) == 1)
+								continue;
+							
+							
+							for (int n = 1; n <= N; n++) {
+								if (TEN.pow(n).multiply(A.add(B)).mod(A.multiply(B)).equals(ZERO)) {
+									matches++;	
+								} 
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		System.out.println("Solution: " +matches + " " + t);
 	}
+
+	private static long pow(int i, int a) {
+		return (long)Math.pow(i, a);
+	}
+	
+	
 }

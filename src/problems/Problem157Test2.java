@@ -6,20 +6,27 @@ import java.util.TreeSet;
 
 import utils.Euler;
 
-public class Problem157Fast {
+public class Problem157Test2 {
 	public static void main(String[] args) {
 		/**
 		 * TODO: finne smarte grenser så har du den jeg sverger kompis
 		 */
 		
 		//p = 2^n*5^n(a+b)/(b*a)
-		
+		/**
+		 * 5001*(1+2^3*5^4)/5001^2
+		 * 
+		 * (1+2^4*5^6)/4717
+		 * 
+		 * (2^4+5^5)/3141
+		 */
 		int count = 0;
-		int N = 6;
+		int N = 3;
 		Set<Integer> set = new TreeSet<Integer>();
 		for (int i = 1; i <= 1000000; i+=2) {
 			if (i % 5 == 0)
 				continue;
+			
 			for (int a2s = 0; a2s <= N+1; a2s++) {
 				for (int a5s = 0; a5s <= N+1; a5s++) {
 					long a = (long) (i*Math.pow(2, a2s)*Math.pow(5, a5s));
@@ -35,13 +42,14 @@ public class Problem157Fast {
 									count++;
 									if (!set.contains(i)) {
 										set.add(i);
-										/*System.out.println(i);
+										System.out.println(i);
 										System.out.println(a + " " + b + " ("+count+")");
 										System.out.println(set.size());
-										System.out.println(Euler.primeFactorList(i));*/
+										System.out.println(Euler.primeFactorList(i));
 										System.out.println(i + " "+ (i-1)/2 + " " + Euler.primeFactorList(i-1));
-										
-//										System.out.println();
+										System.out.println(a2s + " " + a5s + ", "+b2s + " "+b5s);
+										System.out.println();
+										System.out.println(set);
 									}
 								} 
 							}
