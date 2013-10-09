@@ -20,7 +20,7 @@ public class Problem245Observations {
 		for (int n = 2; n <= limit; n++) {
 			if (Euler.isPrime(n))
 				continue;
-			int num = n-Euler.fi(n);
+			int num = n-Euler.phi(n);
 			int denom = n-1;
 			if (denom%num==0) {
 				count++;

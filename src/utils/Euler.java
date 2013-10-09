@@ -498,7 +498,7 @@ public class Euler {
 		return res;
 	}
 	
-	public static int fi(int n) {
+	public static int phi(int n) {
 		int result = n;
 		for (int i = 2; i * i <= n; i++) {
 			if (n % i == 0)

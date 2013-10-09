@@ -9,7 +9,7 @@ public class Problem351Test {
 		for (int row = 2; row <= limit; row++) {
 			if (row % 100000 == 0)
 				System.out.println(row);
-			invisible+=(row-Euler.fi(row))*6;
+			invisible+=(row-Euler.phi(row))*6;
 		}
 		System.out.println(invisible);
 	}
