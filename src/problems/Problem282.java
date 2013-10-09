@@ -38,7 +38,7 @@ public class Problem282 {
 			return a%m;
 		if (m == 1)
 			return 0;
-		return Euler.modPow(a, hyper(a, n-1, Euler.fi(m)), m);
+		return Euler.modPow(a, hyper(a, n-1, Euler.phi(m)), m);
 	}
 	
 	public static long A(long m, long n) {

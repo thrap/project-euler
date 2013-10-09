@@ -511,7 +511,7 @@ public class Euler {
 		return result;
 	}
 	
-	public static long fi(long n) {
+	public static long phi(long n) {
 		long result = n;
 		for (int i = 2; i * i <= n; i++) {
 			if (n % i == 0)
