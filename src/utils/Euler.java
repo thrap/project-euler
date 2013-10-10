@@ -419,6 +419,21 @@ public class Euler {
 			list.add(n);
 		return list;
 	}
+	
+	public static List<Integer> primeFactorDistinctList(long numbers) {
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		long n = numbers;
+		for (int i = 2; i <= n / i; i++) {
+			if (n % i == 0)
+				list.add(i);
+			while (n % i == 0) {
+				n /= i;
+			}
+		}
+		if (n > 1)
+			list.add((int)n);
+		return list;
+	}
 
 	public static List<Integer> divisorList(int n) {
 		int limit = n;
