@@ -1,16 +1,16 @@
 package problems;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class Problem260 {
 	
 	public static void main(String[] args) {
-		long sum = 0;
 		int lim = 100;
 		Set<String> winning = new HashSet<String>();
 		Set<String> losing = new HashSet<String>();
@@ -23,7 +23,7 @@ public class Problem260 {
 			winning.add(tuple(x,0,x));
 			winning.add(tuple(x,x,x));
 		}
-		
+
 		LinkedList<String> remaining = new LinkedList<String>();
 		for (int x = 0; x <= lim; x++) {
 			for (int y = 0; y <= lim; y++) {
@@ -54,16 +54,39 @@ public class Problem260 {
 			}
 		}
 		
-		for (String string : losing) {
+		Set<String> result = new TreeSet<String>(new Comparator<String>() {
+			public int compare(String o1, String o2) {
+				String[] split = o1.split(" ");
+				Integer x = Integer.parseInt(split[0]);
+				Integer y = Integer.parseInt(split[1]);
+				Integer z = Integer.parseInt(split[2]);
+				
+				String[] split2 = o2.split(" ");
+				Integer x2 = Integer.parseInt(split2[0]);
+				Integer y2 = Integer.parseInt(split2[1]);
+				Integer z2 = Integer.parseInt(split2[2]);
+				
+				if (x == x2) {
+					if (y == y2)
+						return z.compareTo(z2);
+					return y.compareTo(y2);
+				}
+				return x.compareTo(x2);
+			}
+		});
+		result.addAll(losing);
+		
+		for (String string : result) {
 			String[] split = string.split(" ");
 			int x = Integer.parseInt(split[0]);
 			int y = Integer.parseInt(split[1]);
 			int z = Integer.parseInt(split[2]);
 			
-			if (x <= y && y <= z)
+			if (x <= y && y <= z) {
 				System.out.println(string);
+			}
 		}
-		System.out.println(sum);
+		System.out.println(sum(losing));
 	}
 
 	private static List<String> getChildList(String el) {
