@@ -389,6 +389,20 @@ public class Euler {
 			list.add((int)n);
 		return list;
 	}
+	
+	public static List<Long> primeFactorLongList(long numbers) {
+		ArrayList<Long> list = new ArrayList<Long>();
+		long n = numbers;
+		for (long i = 2; i <= n / i; i++) {
+			while (n % i == 0) {
+				list.add(i);
+				n /= i;
+			}
+		}
+		if (n > 1)
+			list.add(n);
+		return list;
+	}
 
 	public static List<Integer>[] primeFactorDistinctListsBelow(int limit) {
 		List<Integer>[] primefactors = new List[limit+1];
@@ -549,6 +563,15 @@ public class Euler {
 		while (b != 0) {
 			long temp = b;
 			b = a % b;
+			a = temp;
+		}
+		return a;
+	}
+	
+	public static BigInteger gcd(BigInteger a, BigInteger b) {
+		while (!b.equals(BigInteger.ZERO)) {
+			BigInteger temp = b;
+			b = a.mod(b);
 			a = temp;
 		}
 		return a;
