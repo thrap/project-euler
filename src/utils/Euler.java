@@ -63,6 +63,13 @@ public class Euler {
 		System.out.println();
 	}
 	
+	public static void printMatrix(BigInteger[][] A) {
+		for (int i = 0; i < A.length; i++) {
+			System.out.println(Arrays.toString(A[i]));
+		}
+		System.out.println();
+	}
+	
 	private static void printMatrix(long[][] A, long mod) {
 		for (int i = 0; i < A.length; i++) {
 			System.out.print("[");
@@ -102,7 +109,40 @@ public class Euler {
 				result = matrixMult(result, powArray[i]);
 			}
 		}
+		return result;
+	}
+	
+	public static BigInteger[][] matrixPow(BigInteger[][] matrix, long pow) {
+		int length = (int) (Math.log(pow)/Math.log(2))+1;
+		long[] ints = new long[length];
+		BigInteger[][][] powArray = new BigInteger[length][][];
 		
+		for (int i = 0; i < ints.length; i++) {
+			ints[i] = (long)Math.pow(2, i);
+		}
+		
+		powArray[0] = matrix;
+		for (int i = 1; i < powArray.length; i++) {
+			powArray[i] = matrixMult(powArray[i-1], powArray[i-1]);
+		}
+
+		long pows = 0;
+		BigInteger[][] result = new BigInteger[matrix.length][matrix.length];
+		//identity matrix
+		for (int i = 0; i < result.length; i++) {
+			Arrays.fill(result[i], BigInteger.ZERO);
+		}
+		for (int i = 0; i < result.length; i++) {
+			result[i][i] = BigInteger.ONE;
+		}
+		for (int i = ints.length-1; i >= 0; i--) {
+			long a = ints[i];
+			
+			if (((pow-pows)/a) == 1) {
+				pows += a;
+				result = matrixMult(result, powArray[i]);
+			}
+		}
 		return result;
 	}
 	
@@ -112,6 +152,23 @@ public class Euler {
 			for (int j = 0; j < res.length; j++) {
 				for (int k = 0; k < res.length; k++) {
 					res[i][j] += (A[i][k]*B[k][j]);
+				}
+			}
+		}
+		
+		
+		return res;
+	}
+	
+	public static BigInteger[][] matrixMult(BigInteger[][] A, BigInteger[][] B) {
+		BigInteger[][] res = new BigInteger[A.length][A.length];
+		for (int i = 0; i < res.length; i++) {
+			Arrays.fill(res[i], BigInteger.ZERO); 
+		}
+		for (int i = 0; i < res.length; i++) {
+			for (int j = 0; j < res.length; j++) {
+				for (int k = 0; k < res.length; k++) {
+					res[i][j]  = res[i][j].add(A[i][k].multiply(B[k][j]));
 				}
 			}
 		}
