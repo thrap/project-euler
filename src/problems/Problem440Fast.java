@@ -6,9 +6,8 @@ public class Problem440Fast {
 	public static void main(String[] args) {
 		int i = 10;
 		System.out.println("S("+i+") = "+S(i));
-		System.out.println(count);
 	}
-static int count = 0;
+
 	static long mod = 987898789;
 	private static long S(int L) {
 		long sum = 0;
@@ -26,10 +25,6 @@ static int count = 0;
 					long pow1 = (long)Math.pow(c, a);
 					long pow2 = (long)Math.pow(c, b);
 					sum += 2*T(Euler.gcd(pow1+1, pow2+1)-1);
-					if (Euler.gcd(pow1+1, pow2+1)!=1) {
-						count++;
-						System.out.println(c + " " +a + " " + b);
-					}
 					sum %= mod;
 				}
 			}
