@@ -5,34 +5,34 @@ function KakuroCtrl($scope) {
         updatePuzzle($scope.input);
     };
 
-    function updatePuzzle(input) {
-        var Cell = function(cellText) {
-            if (cellText === 'X')
-                this.class = 'grey';
-            else if (cellText === 'O')
-                this.class = 'white empty';
-            else if (/[A-Z]$/.test(cellText)) {
-                this.class = 'white';
-                this.content = cellText;
+    function Cell(cellText) {
+        if (cellText === 'X')
+            this.class = 'grey';
+        else if (cellText === 'O')
+            this.class = 'white empty';
+        else if (/[A-Z]$/.test(cellText)) {
+            this.class = 'white';
+            this.content = cellText;
+        } else {
+            this.class ='sum';
+            var self = this;
+            var sum = cellText.replace('(','').replace(')','');
+            if (sum.indexOf(',') !== -1) {
+                var split = sum.split(',');
+                self.upperText = split[0].substr(1);
+                self.lowerText = split[0].substr(1);
             } else {
-                this.class ='sum';
-                var self = this;
-                var sum = cellText.replace('(','').replace(')','');
-                if (sum.indexOf(',') !== -1) {
-                    var split = sum.split(',');
-                    self.upperText = split[0].substr(1);
-                    self.lowerText = split[0].substr(1);
+                if (sum[0] === 'h') {
+                    self.upperText = sum.substr(1);
                 } else {
-                    if (sum[0] === 'h') {
-                        self.upperText = sum.substr(1);
-                    } else {
-                        self.lowerText = sum.substr(1);
-                    }
+                    self.lowerText = sum.substr(1);
                 }
             }
-        };
-        var split = input.split(',');
+        }
+    }
 
+    function updatePuzzle(input) {
+        var split = input.split(',');
 
         $scope.rows = [];
         var length = parseInt(split[0]);
