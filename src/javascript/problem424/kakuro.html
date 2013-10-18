@@ -1,0 +1,55 @@
+<!doctype html>
+<html ng-app>
+<head>
+    <script src="../libs/angular.js"></script>
+    <script src="kakuroctrl.js"></script>
+</head>
+<body>
+<style>
+    .cell {
+        height: 50px;
+        width: 50px;
+        display: inline-block;
+        border: 1px solid black;
+        margin: 2px;
+        vertical-align: top;
+        font-size: 42px;
+        position: relative;
+    }
+    .upperText,.lowerText {
+        font-size: 14px;
+        position: absolute;
+    }
+    .lowerText {
+        bottom: 0;
+        left: 3px;
+    }
+    .upperText {
+        top: 0;
+        right: 3px;
+    }
+    .sum {
+        background-color: lightgray;
+    }
+    .grey {
+        background-color: lightgray;
+    }
+
+    .white {
+        text-align: center;
+    }
+</style>
+<div ng-controller="KakuroCtrl">
+    <div class="row" ng-repeat="row in rows">
+        <div class="cell {{cell.class}}" ng-repeat="cell in row track by $index">
+            <span>{{cell.content}}</span>
+            <span class="upperText">{{cell.upperText}}</span>
+            <span class="lowerText">{{cell.lowerText}}</span>
+            <div ng-show="cell.class == 'sum'" style="width: 70px; height: 50px; border-bottom: 1px solid black; -webkit-transform: translateY(-18px) translateX(8px) rotate(45deg); "></div>
+        </div>
+    </div>
+
+    <input id="puzzle-input" ng-change="updateBoard()" ng-model="input" placeholder="Paste in puzzle">
+</div>
+</body>
+</html>
