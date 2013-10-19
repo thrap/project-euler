@@ -20,7 +20,7 @@ function KakuroCtrl($scope) {
             if (sum.indexOf(',') !== -1) {
                 var split = sum.split(',');
                 self.upperText = split[0].substr(1);
-                self.lowerText = split[0].substr(1);
+                self.lowerText = split[1].substr(1);
             } else {
                 if (sum[0] === 'h') {
                     self.upperText = sum.substr(1);
