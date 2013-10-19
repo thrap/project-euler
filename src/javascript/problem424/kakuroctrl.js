@@ -13,6 +13,9 @@ function KakuroCtrl($scope) {
         else if (/[A-Z]$/.test(cellText)) {
             this.class = 'white';
             this.content = cellText;
+        } else if (/[1-9]$/.test(cellText)) {
+            this.class = 'white';
+            this.content = cellText;
         } else {
             this.class ='sum';
             var self = this;
