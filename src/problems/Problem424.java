@@ -99,17 +99,17 @@ public class Problem424 {
 	}
 	
 	private static class Digit implements Cell {
-		int number;
-		public Digit(int c) {
-			this.number = c;
+		int digit;
+		public Digit(int digit) {
+			this.digit = digit;
 		}
 		
 		public String toString() {
-			return "  "+number + "  ";
+			return "  "+digit + "  ";
 		}
 		
 		public String toRawString() {
-			return ""+number;
+			return ""+digit;
 		}
 	}
 	
@@ -123,6 +123,126 @@ public class Problem424 {
 		public void addCell(Cell cell) {
 			cells.add(cell);
 		}
+
+		public int getMinValue() {
+			int blank = 0;
+			int minSum = 0;
+			boolean[] taken = new boolean[10];
+			List<Letter> letters = new ArrayList<Letter>();
+			for (Cell cell : cells) {
+				if (cell instanceof White) {
+					blank++;
+				} else if (cell instanceof Digit) {
+					int number = ((Digit)cell).digit;
+					taken[number] = true;
+					minSum += number;
+				} else if (cell instanceof Letter) {
+					letters.add((Letter)cell);
+				} else {
+					throw new RuntimeException("Nå har det skjedd noe feil");
+				}
+			}
+			if (letters.size() == 1) {
+				int number = pv.getMinPositiveValue(letters.get(0).c);
+				taken[number] = true;
+				minSum+=number;
+			} else if (letters.size() == 2) {
+				char c1 = letters.get(0).c;
+				char c2 = letters.get(1).c;
+
+				int number1 = pv.getMinPositiveValue(c1);
+				int number2 = pv.getMinPositiveValue(c2);
+
+				int sum1 = number1 + pv.getMinValueOver(c2, number1);
+				int sum2 = number2 + pv.getMinValueOver(c1, number2);
+				
+				if (sum1 < sum2) {
+					taken[number1] = true;
+					taken[sum1-number1] = true;
+					minSum += sum1;
+				} else {
+					taken[number2] = true;
+					taken[sum2-number2] = true;
+					minSum += sum2;
+				}
+			} else if (letters.size() >= 3) {
+				throw new RuntimeException("Denne må du lage nå kompis");
+			}
+			
+			for (int i = 1; blank != 0; i++) {
+				if (!taken[i]) {
+					minSum += i;
+					blank--;
+				}
+			}
+			
+			if (rule.length() == 2) {
+				char c1 = rule.charAt(0);
+				return Math.max(pv.getMinPositiveValue(c1)*10, minSum);
+			} else {
+				return minSum;
+			}
+		}
+
+		public int getMaxValue() {
+			int blank = 0;
+			int maxSum = 0;
+			boolean[] taken = new boolean[10];
+			List<Letter> letters = new ArrayList<Letter>();
+			for (Cell cell : cells) {
+				if (cell instanceof White) {
+					blank++;
+				} else if (cell instanceof Digit) {
+					int number = ((Digit)cell).digit;
+					taken[number] = true;
+					maxSum += number;
+				} else if (cell instanceof Letter) {
+					letters.add((Letter)cell);
+				} else {
+					throw new RuntimeException("Nå har det skjedd noe feil");
+				}
+			}
+			if (letters.size() == 1) {
+				int number = pv.getMaxValue(letters.get(0).c);
+				taken[number] = true;
+				maxSum+=number;
+			} else if (letters.size() == 2) {
+				char c1 = letters.get(0).c;
+				char c2 = letters.get(1).c;
+
+				int number1 = pv.getMaxValue(c1);
+				int number2 = pv.getMaxValue(c2);
+
+				int sum1 = number1 + pv.getMaxValueUnder(c2, number1);
+				int sum2 = number2 + pv.getMaxValueUnder(c1, number2);
+				
+				if (sum1 > sum2) {
+					taken[number1] = true;
+					taken[sum1-number1] = true;
+					maxSum += sum1;
+				} else {
+					taken[number2] = true;
+					taken[sum2-number2] = true;
+					maxSum += sum2;
+				}
+			} else if (letters.size() >= 3) {
+				throw new RuntimeException("Denne må du lage nå kompis");
+			}
+			
+			for (int i = 9; blank != 0; i--) {
+				if (!taken[i]) {
+					maxSum += i;
+					blank--;
+				}
+			}
+			
+			if (rule.length() == 1) {
+				return Math.min(9, maxSum);
+			} else {
+				char c1 = rule.charAt(0);
+				return Math.min(pv.getMaxValue(c1)*10+9, maxSum); 
+			}
+		}
 	}
 	
 	public static class PossibleValues {
@@ -135,6 +255,38 @@ public class Problem424 {
 			}
 		}
 		
+		public int getMaxValueUnder(char c, int number) {
+			for(int i = number-1; i>=1; i--) {
+				if (possible[c-'A'][i])
+					return i;
+			}
+			throw new RuntimeException("Nå har det skjedd noe feil");
+		}
+
+		public int getMaxValue(char c) {
+			for(int i = 9; i>=1; i--) {
+				if (possible[c-'A'][i])
+					return i;
+			}
+			throw new RuntimeException("Nå har det skjedd noe feil");
+		}
+
+		public int getMinPositiveValue(char c) {
+			for(int i = 1; i<=9; i++) {
+				if (possible[c-'A'][i])
+					return i;
+			}
+			throw new RuntimeException("Nå har det skjedd noe feil");
+		}
+		
+		public int getMinValueOver(char c, int number) {
+			for(int i = number+1; i<=9; i++) {
+				if (possible[c-'A'][i])
+					return i;
+			}
+			throw new RuntimeException("Nå har det skjedd noe feil");
+		}
+
 		public void remove(char c, int...is) {
 			for (int i : is) {
 				if (possible[c-'A'][i]) {
@@ -220,6 +372,18 @@ public class Problem424 {
 			}
 			return count;
 		}
+
+		public void removeLessThan(char c, int minValue) {
+			for (int i = minValue-1; i >= 0; i--) {
+				remove(c, i);
+			}
+		}
+
+		public void removeGreaterThan(char c, int maxValue) {
+			for (int i = maxValue+1; i<=9; i++) {
+				remove(c, i);
+			}
+		}
 	}
 	static PossibleValues pv = new PossibleValues();
 	
@@ -228,38 +392,69 @@ public class Problem424 {
 		String input = "6,X,X,(vCC),(vI),X,X,X,(hH),B,O,(vCA),(vJE),X,(hFE,vD),O,O,O,O,(hA),O,I,(hJC,vB),O,O,(hJC),H,O,O,O,X,X,X,(hJE),O,O,X";
 		Cell[][] puzzle = parseBoard(input);
 		
-		for (Row row : getRows(puzzle)) {
-			String cell = row.rule;
-			if (row.cells.size() == 2) {
-				if (cell.length() == 2)
-					pv.remove(cell.charAt(0), 0,2,3,4,5,6,7,8,9);
-				else 
-					pv.remove(cell.charAt(0), 0,1,2);
-			} else if (row.cells.size() == 3) {
-				if (cell.length() == 2)
-					pv.remove(cell.charAt(0), 0,3,4,5,6,7,8,9);
-				else 
-					pv.remove(cell.charAt(0), 0,1,2,3,4,5);
-			} else if (row.cells.size() >= 4) {
-				// length == 2
-				pv.remove(cell.charAt(0), 0,4,5,6,7,8,9);
-			}
+		for (int i = 0; i <= 10; i++) {
+			lookAtRowsWithMinAndMaxValues(puzzle);
+			decryptDigits(puzzle);
 		}
 		
-//		for (char c = 'A'; c <= 'J'; c++) {
-//			Set<Integer> set = pv.possible[c-'A'];
-//			
-//			if (set.size() == 1) {
-//				int number = set.iterator().next();
-//				removeNumberFromOthers(c, number);
-//				decryptDigit(c, number, puzzle);
-//			}
-//		}
-		
 		System.out.println(pv);
-		
+//		decryptDigit(c, number, puzzle);
 		System.out.println(t);
 		printRawPuzzle(puzzle);
+	}
+
+	private static void lookAtRowsWithMinAndMaxValues(Cell[][] puzzle) {
+		for (Row row : getRows(puzzle)) {
+			String sum = row.rule;
+			int minValue = row.getMinValue();
+			int maxValue = row.getMaxValue();
+			
+			if (sum.length() == 1) {
+				char c = sum.charAt(0);
+				pv.removeLessThan(c, minValue);
+				pv.removeGreaterThan(c, maxValue);
+			} else {
+				char c1 = sum.charAt(0);
+				pv.remove(c1, 0);
+				pv.remove(c1, 5,6,7,8,9);
+				char c2 = sum.charAt(1);
+				String minString = ""+minValue;
+				String maxString = ""+maxValue;
+				
+				pv.removeLessThan(c1, minValue/10);
+				pv.removeGreaterThan(c1, maxValue/10);
+				
+				if (c1 == c2) {
+					if (minValue > 11 || maxValue < 11) {
+						pv.remove(c1, 1);
+					}
+					if (minValue > 22 || maxValue < 22) {
+						pv.remove(c1, 2);
+					}
+					if (minValue > 33 || maxValue < 33) {
+						pv.remove(c1, 3);
+					}
+					if (minValue > 44 || maxValue < 44) {
+						pv.remove(c1, 4);
+					}
+				}
+				if (minString.charAt(0) == maxString.charAt(0)) {
+					pv.removeLessThan(c2, minValue%10);
+					pv.removeGreaterThan(c2, maxValue%10);
+				}
+				
+				System.out.println(sum + " " +minString + " - " + maxString);
+				
+			}
+		}
+	}
+	
+	private static void decryptDigits(Cell[][] puzzle) {
+		for (char c = 'A'; c <= 'J'; c++) {
+			if (pv.value[c-'A'] != -1) {
+				decryptDigit(c, pv.value[c-'A'], puzzle);
+			}
+		}
 	}
 
 	private static void decryptDigit(char c, int number, Cell[][] puzzle) {
@@ -267,20 +462,10 @@ public class Problem424 {
 			for (int j = 0; j < puzzle.length; j++) {
 				Cell cell = puzzle[i][j];
 				if (cell instanceof EncryptedSum) {
-					/**
-					 * TODO
-					 */
+					((EncryptedSum)cell).rawString = ((EncryptedSum)cell).rawString.replaceAll(""+c, ""+number);
 				} else if (cell instanceof Letter && ((Letter)cell).c == c) {
 					puzzle[i][j] = new Digit(number);
 				}
-			}
-		}
-	}
-
-	private static void removeNumberFromOthers(char c, int number) {
-		for (char other = 'A'; other <= 'J'; other++) {
-			if (c != other) {
-				pv.remove(other, number);
 			}
 		}
 	}
@@ -315,12 +500,6 @@ public class Problem424 {
 			}
 		}
 		return rows;
-	}
-
-	private static void printPuzzle(Cell[][] puzzle) {
-		for (int j = 0; j < puzzle.length; j++) {
-			System.out.println(Arrays.toString(puzzle[j]));
-		}
 	}
 
 	private static void printRawPuzzle(Cell[][] puzzle) {
