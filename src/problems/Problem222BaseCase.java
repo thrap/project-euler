@@ -19,7 +19,7 @@ public class Problem222BaseCase {
 		}
 		
 		public String toMathematica() {
-			return "Circle[{"+center.x+", "+center.y+"}, "+r+"]";
+			return "Disk[{"+center.x+", "+center.y+"}, "+r+"]";
 		}
 	}
 	public static void main(String[] args) {
