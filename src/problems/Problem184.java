@@ -5,6 +5,10 @@ import utils.Point;
 public class Problem184 {
 	
 	private static final int r = 105;
+
+    /**
+     * Se på side 40 i grafikkboka - jeg sverger kompis dette er det som kommer til å funke
+     */
 	
 	public static void main(String[] args) {
 		int count = 0;
