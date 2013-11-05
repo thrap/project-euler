@@ -5,21 +5,8 @@ import utils.T;
 
 public class Problem443 {
 	public static void main(String[] args) {
-//		System.out.println(g(1000));
-		System.out.println(g(100000));
 		T t = new T();
-		
 		System.out.println(f((long)Math.pow(10, 15)) + " " + t);
-	}
-
-	private static long g(long n) {
-		long g = 13;
-		for (int i = 5; i <= n; i++) {
-			if (Euler.gcd(i, g) != 1)
-				System.out.println(i +" "+ g + " " + Euler.gcd(i, g) + " " + Euler.primeFactorList(i) + " " + Euler.primeFactorList(g));
-			g = g+Euler.gcd(i, g);
-		}
-		return g;
 	}
 	
 	private static long f(long n) {
