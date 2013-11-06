@@ -208,6 +208,46 @@ public class Euler {
 		return result;
 	}
 	
+	
+	public static double logBigInteger(BigInteger val) {
+        int bl = val.bitLength();
+        int blex = bl - 1022; // not critical, any value in ~60-1023 is acceptable
+        if (blex > 0)   val = val.shiftRight(blex);
+        double res = Math.log(val.doubleValue());
+        return blex > 0 ? res + blex * Math.log(2.0) : res;
+   }
+	
+	public static long[][] matrixPow(long[][] matrix, BigInteger pow, long mod) {
+		int length = (int)(logBigInteger(pow)/Math.log(2.0))+1;
+		BigInteger[] ints = new BigInteger[length];
+		long[][][] powArray = new long[length][][];
+		
+		for (int i = 0; i < ints.length; i++) {
+			ints[i] = BigInteger.valueOf(2).pow(i);
+		}
+		powArray[0] = matrix;
+		for (int i = 1; i < powArray.length; i++) {
+			powArray[i] = matrixMult(powArray[i-1], powArray[i-1], mod);
+		}
+
+		BigInteger pows = BigInteger.ZERO;
+		long[][] result = new long[matrix.length][matrix.length];
+		//identity matrix
+		for (int i = 0; i < result.length; i++) {
+			result[i][i] = 1;
+		}
+		for (int i = ints.length-1; i >= 0; i--) {
+			BigInteger a = ints[i];
+			
+			if (pow.subtract(pows).divide(a).equals(BigInteger.ONE)) {
+				pows = pows.add(a);
+				result = matrixMult(result, powArray[i], mod);
+			}
+		}
+		
+		return result;
+	}
+	
 	public static long[][] matrixMult(long[][] A, long[][] B, long mod) {
 		long[][] res = new long[A.length][A.length];
 		for (int i = 0; i < res.length; i++) {
