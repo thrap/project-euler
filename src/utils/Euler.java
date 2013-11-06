@@ -665,6 +665,37 @@ public class Euler {
 		return a;
 	}
 	
+	public static long powerMod(long a, long b, long m) {
+		if (b == 0) {
+			return 1;
+		} else if (b == 1) {
+			return a;
+		} else {
+			long temp = powerMod(a, b / 2, m);
+			if (b % 2 == 0) {
+				return (temp * temp) % m;
+			} else {
+				return (((temp * temp) % m) * a) % m;
+			}
+		}
+	} 
+
+	
+	public static int gcd(int a, int b) {
+		if (a < 0) {
+			a *= -1;
+		}
+		if (b < 0) {
+			b *= -1;
+		}
+		while (b != 0) {
+			int temp = b;
+			b = a % b;
+			a = temp;
+		}
+		return a;
+	}
+	
 	public static BigInteger gcd(BigInteger a, BigInteger b) {
 		while (!b.equals(BigInteger.ZERO)) {
 			BigInteger temp = b;
