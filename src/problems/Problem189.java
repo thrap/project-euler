@@ -3,6 +3,8 @@ package problems;
 import java.util.HashMap;
 import java.util.Map;
 
+import utils.T;
+
 public class Problem189 {
 	
 	private static class Tree {
@@ -113,63 +115,21 @@ public class Problem189 {
 	}
 	
 	public static void main(String[] args) {
+		T t = new T();
 		
-		Map<Tree,Long> trees1 = new HashMap<Tree, Long>();
-		for (int root = 0; root < 3; root++) {
-			trees1.put(new Tree(root), 1L);
-		}
-		
-		
-		Map<Tree,Long> trees2 = new HashMap<Tree, Long>();
-		for (Tree t : trees1.keySet()) {
-			DownTree middle = new DownTree(t);
-			for (Tree over : trees1.keySet()) {
-				if (!middle.fitsUnder(over))
-					continue;
-				for (Tree left : trees1.keySet()) {
-					if (!middle.fitsRightOf(left))
-						continue;
-					for (Tree right : trees1.keySet()) {
-						if (!middle.fitsLeftOf(right))
-							continue;
-						Tree tree = new Tree(over, middle, left, right);
-						trees2.put(tree, (trees2.containsKey(tree) ? trees2.get(tree) : 0) + trees1.get(t)*trees1.get(over)*trees1.get(left)*trees1.get(right));
-					}
-				}
-			}
-		}
-		
-		Map<Tree,Long> trees4 = new HashMap<Tree, Long>();
-		for (Tree t : trees2.keySet()) {
-			DownTree middle = new DownTree(t);
-			for (Tree over : trees2.keySet()) {
-				if (!middle.fitsUnder(over))
-					continue;
-				for (Tree left : trees2.keySet()) {
-					if (!middle.fitsRightOf(left))
-						continue;
-					for (Tree right : trees2.keySet()) {
-						if (!middle.fitsLeftOf(right))
-							continue;
-						Tree tree = new Tree(over, middle, left, right);
-						trees4.put(tree, (trees4.containsKey(tree) ? trees4.get(tree) : 0) + trees2.get(t)*trees2.get(over)*trees2.get(left)*trees2.get(right));
-					}
-				}
-			}
-		}
-		
+		Map<Tree, Long> trees = getFourRowTrees();
 		long sum = 0;
 		int i = 0;
-		for (Tree t : trees4.keySet()) {
+		for (Tree mid : trees.keySet()) {
 			if (++i % 100 == 0)
-				System.out.println(i + " / "+trees4.size() + " " + sum);
-			DownTree middle = new DownTree(t);
+				System.out.println(i + " / "+trees.size() + " " + sum);
+			DownTree middle = new DownTree(mid);
 			
 			long overFits = 0;
 			long leftFits = 0;
 			long rightFits = 0;
-			for (Tree tree : trees4.keySet()) {
-				Long fits = trees4.get(tree);
+			for (Tree tree : trees.keySet()) {
+				Long fits = trees.get(tree);
 				if (middle.fitsUnder(tree))
 					overFits += fits;
 				if (middle.fitsRightOf(tree))
@@ -178,9 +138,39 @@ public class Problem189 {
 					rightFits += fits;
 			}
 			
-			sum += trees4.get(t)*overFits*leftFits*rightFits;
+			sum += trees.get(mid)*overFits*leftFits*rightFits;
 		}
-		System.out.println(sum);
-		System.out.println(trees4.size());
+		System.out.println(sum + " " + t);
+	}
+
+	private static Map<Tree, Long> getFourRowTrees() {
+		Map<Tree,Long> lastMap = new HashMap<Tree, Long>();
+		for (int root = 0; root < 3; root++) {
+			lastMap.put(new Tree(root), 1L);
+		}
+		
+		for (int i = 0; i < 2; i++) {
+			Map<Tree,Long> map = new HashMap<Tree, Long>();
+			for (Tree t : lastMap.keySet()) {
+				DownTree middle = new DownTree(t);
+				for (Tree over : lastMap.keySet()) {
+					if (!middle.fitsUnder(over))
+						continue;
+					for (Tree left : lastMap.keySet()) {
+						if (!middle.fitsRightOf(left))
+							continue;
+						for (Tree right : lastMap.keySet()) {
+							if (!middle.fitsLeftOf(right))
+								continue;
+							Tree tree = new Tree(over, middle, left, right);
+							map.put(tree, (map.containsKey(tree) ? map.get(tree) : 0) + lastMap.get(t)*lastMap.get(over)*lastMap.get(left)*lastMap.get(right));
+						}
+					}
+				}
+			}
+			lastMap = map;
+		}
+		
+		return lastMap;
 	}
 }
