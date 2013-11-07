@@ -16,37 +16,29 @@ function KakuroCtrl($scope) {
         } else if (/[1-9]$/.test(cellText)) {
             this.class = 'white';
             this.content = cellText;
+        } else if (/\(h[A-Z0-9]+\)$/.test(cellText)) {
+            this.class = 'sum';
+            this.upperText = cellText.replace(/\(|\)|h|v/g,'');
+        } else if (/\(v[A-Z0-9]+\)$/.test(cellText)) {
+            this.class = 'sum';
+            this.lowerText = cellText.replace(/\(|\)|h|v/g,'');
         } else {
             this.class ='sum';
-            var self = this;
-            var sum = cellText.replace('(','').replace(')','');
-            if (sum.indexOf(',') !== -1) {
-                var split = sum.split(',');
-                self.upperText = split[0].substr(1);
-                self.lowerText = split[1].substr(1);
-            } else {
-                if (sum[0] === 'h') {
-                    self.upperText = sum.substr(1);
-                } else {
-                    self.lowerText = sum.substr(1);
-                }
-            }
+            var sums = cellText.match(/[A-Z0-9]+/g);
+            console.log(sums);
+            this.upperText = sums[0];
+            this.lowerText = sums[1];
         }
     }
 
     function updatePuzzle(input) {
-        var split = input.split(',');
+        var nodes = input.match(/\(.*?\)|[A-Z0-9]/g);
 
         $scope.rows = [];
-        var length = parseInt(split[0]);
+        var length = parseInt(nodes[0]);
         var row = [];
-        for (var i = 1; i<split.length; i++) {
-            var cellText = split[i];
-            if (cellText[0] === '(' && cellText[cellText.length-1] !== ')') {
-                cellText += ','+split[++i];
-            }
-
-            row.push(new Cell(cellText));
+        for (var i = 1; i<nodes.length; i++) {
+            row.push(new Cell(nodes[i]));
             if (row.length === length) {
                 $scope.rows.push(row);
                 row = [];
