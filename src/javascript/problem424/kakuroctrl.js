@@ -25,7 +25,6 @@ function KakuroCtrl($scope) {
         } else {
             this.class ='sum';
             var sums = cellText.match(/[A-Z0-9]+/g);
-            console.log(sums);
             this.upperText = sums[0];
             this.lowerText = sums[1];
         }
