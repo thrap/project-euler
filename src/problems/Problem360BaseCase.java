@@ -1,9 +1,12 @@
 package problems;
 
+import utils.T;
+
 
 public class Problem360BaseCase {
 	
 	public static void main(String[] args) {
+		T t = new T();
 		long sum = 0;
 		int r = 45;
 		int count = 0;
@@ -17,6 +20,6 @@ public class Problem360BaseCase {
 				}
 			}
 		}
-		System.out.println(sum + " " + count);
+		System.out.println(sum + " " + count + " " + t);
 	}
 }
