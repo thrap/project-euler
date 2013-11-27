@@ -65,7 +65,7 @@ public class Problem229 {
 
 	private static void reccurse2(long n, int i) {
 		if (i == other.size() || other.get(i)*n > limit) {
-			if (isBruteSpecial((int)n)) {
+			if (isBruteSpecial((int)n)) { // denne er ganske treg
 				specials.add((int)n);
 				if (specials.size() % 1000 == 0)
 					System.out.println(specials.size());
