@@ -50,7 +50,7 @@ public class Problem315 {
 	public static long sam(List<Integer> list) {
 		long sum = 0;
 		for (Integer integer : list) {
-			sum+=på(integer, 0);
+			sum+=paa(integer, 0);
 			sum+=av(integer, 0);
 //			for (int i = 0; i < number.length(); i++) {
 //				int digit = number.charAt(i)-'0';
@@ -66,14 +66,14 @@ public class Problem315 {
 		for (int i = 0; i < list.size(); i++) {
 			int tall = list.get(i);
 			int neste = (i+1==list.size()?0:list.get(i+1));
-			sum+=på(tall, forrige);
+			sum+=paa(tall, forrige);
 			sum+=av(tall, neste);
 			forrige = tall;
 		}
 		return sum;
 	}
 	
-	public static long på(int tall, int forrige) {
+	public static long paa(int tall, int forrige) {
 		long sum = 0;
 		if (forrige == 0) {
 			String number = ""+tall;

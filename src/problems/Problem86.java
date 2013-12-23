@@ -5,14 +5,14 @@ import utils.Euler;
 public class Problem86 {
 	public static void main(String[] args) {
 		
-		int mål = 1000000;
-		int lav = 1000;
-		int hoy = 2000;
+		int goal = 1000000;
+		int upper = 1000;
+		int lower = 2000;
 		
 		int temp = 0;
 		while (true) {
 			int teller = 0;
-			int limit = (hoy+lav)/2;
+			int limit = (lower+upper)/2;
 			if (limit == temp) 
 				System.exit(0);
 			temp = limit;
@@ -27,10 +27,10 @@ public class Problem86 {
 				}
 			}
 			System.out.println(teller);
-			if (teller > mål)
-				hoy = limit;
-			else if (teller < mål)
-				lav = limit;
+			if (teller > goal)
+				lower = limit;
+			else if (teller < goal)
+				upper = limit;
 		}
 	}
 }

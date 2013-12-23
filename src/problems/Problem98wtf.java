@@ -170,8 +170,8 @@ public class Problem98wtf {
 				for (int i = 0; i < tall.length(); i++) {
 					sb3.append(hei.get(tall.charAt(i)));
 				}
-				String mål = supersupermap.get(sb3.toString());
-				if (mål != null) {
+				String maal = supersupermap.get(sb3.toString());
+				if (maal != null) {
 					for (int i = 1; true; i++) {
 						String tall2 = "" + i*i;
 						if (tall2.length() > LENGTH)
@@ -183,7 +183,7 @@ public class Problem98wtf {
 							sb34.append(hei.get(tall2.charAt(ifsd)));
 						}
 //				System.out.println(sb34);
-						if(sb34.toString().equals(mål)) {
+						if(sb34.toString().equals(maal)) {
 //					System.out.println("hei");
 							System.out.println(anagrams.get(iasddfgas) + ": "+ tall2 + " " + tall + " = " + i*i);
 							break;

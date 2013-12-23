@@ -52,7 +52,7 @@ public class Problem147 {
 			else
 				return y-1>=w || (y>=w && x-1>=w);
 		} else {
-			//høyde på største kvadrat = y
+			//hï¿½yde pï¿½ stï¿½rste kvadrat = y
 			long i = y-w;
 			if (y==x) 
 				return h<=y+i -(h%2==0?0:1);
@@ -88,19 +88,19 @@ public class Problem147 {
 			if (w%2==0) {
 				return (y-w/2)*2*(x-w/2);
 			} else {
-				long f¿rsteRad = (x-w)+1;
-				long andreRad = f¿rsteRad+1;
+				long forsteRad = (x-w)+1;
+				long andreRad = forsteRad+1;
 				long antallEkstraRader = (y+1-w);
 				if (antallEkstraRader < 0) 
 					antallEkstraRader = 0;
-				long sum = f¿rsteRad + antallEkstraRader*(f¿rsteRad+andreRad);
+				long sum = forsteRad + antallEkstraRader*(forsteRad+andreRad);
 				if (sum > 0)
 					return sum;
 				//TODO HER
 				/**
 				 * 
 				 * tips kanskje til TODO's:
-					//høyde på største kvadrat = y
+					//hï¿½yde pï¿½ stï¿½rste kvadrat = y
 					long i = y-w;
 					if (y==x) 
 						return h<=y+i -(h%2==0?0:1);
@@ -110,16 +110,16 @@ public class Problem147 {
 			}
 		} else {
 			//TODO HER
-			//y == høyde på største kvadrat
+			//y == hï¿½yde pï¿½ stï¿½rste kvadrat
 //			(x-y)+1 = antall kvadrater
 //			antall kvadrater - 1 = antall mindre kvadrater
 			
-			//TODO dette er feil fordi det strøste kvadratet er bare bullshit hæhæ
+			//TODO dette er feil fordi det strï¿½ste kvadratet er bare bullshit hï¿½hï¿½
 //			storste kvadrat w*h passer i er w*w
 			long kvadrater = ((x-w)+1)*(y-w+1);
 			long sum = kvadrater*rect(w, h, w, w);
 			
-			//TODO kutter av i 4 hjørner som har w-1 kvadrater
+			//TODO kutter av i 4 hjï¿½rner som har w-1 kvadrater
 			sum += 2*rect(w, h, w, w-1);
 			if (sum >= 0)
 				return sum;
@@ -136,8 +136,8 @@ public class Problem147 {
 				sum+=sum(i,j);
 			}
 		}
-		System.out.println(sum(3,2) + " skal være 37");
-		System.out.println(sum(5,7) + " skal være 1120");
+		System.out.println(sum(3,2) + " skal vï¿½re 37");
+		System.out.println(sum(5,7) + " skal vï¿½re 1120");
 		System.out.println(sum + " er summen");
 //		System.out.println(normalSum(3,2) + " er summen ikke-snudde i 3x2");
 //		System.out.println(tiltedSum(3,2) + " er summen snudde i 3x2");

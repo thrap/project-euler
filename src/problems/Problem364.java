@@ -1,6 +1,7 @@
 package problems;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,8 @@ public class Problem364 {
 		private boolean[] taken;
 		private List<Integer> idx = new ArrayList<Integer>();
 		
+		boolean onlyRemaining = false;
+		
 		public Seating(boolean[] taken) {
 			this.taken = taken;
 			
@@ -21,6 +24,7 @@ public class Problem364 {
 				addOneAdjacent();
 			}
 			if (idx.isEmpty()) {
+				onlyRemaining = true;
 				addRemaining();
 			}
 		}
@@ -74,10 +78,11 @@ public class Problem364 {
 		T t = new T();
 		for (int i = 2; i < 24; i++) {
 			long T = T(i);
-//			System.out.print(T + ", ");
+			System.out.println(map);
 			System.out.println("T("+i+") = " + T);
 			System.out.println(Euler.primeFactorLongList(T));
 			System.out.println();
+			map.clear();
 		}
 		System.out.println(t);
 	}
@@ -89,6 +94,8 @@ public class Problem364 {
 	static int count = 0;
 
 	static Map<String, Long> memoize = new HashMap<String, Long>();
+	
+	static Map<Integer, Integer> map = new HashMap<Integer, Integer>();
 	
 	private static long reccurse(Seating seating) {
 		String memo = seating.toString();

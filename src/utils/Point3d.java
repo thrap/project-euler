@@ -1,18 +1,14 @@
 package utils;
 
+
 public class Point3d {
-	final int x;
-	final int y;
-	final int z;
+	public final int x;
+	public final int y;
+	public final int z;
 	
 	public Point3d(int x, int y, int z) {
-		if (x > y) {
-			this.x = y;
-			this.y = x;
-		} else {
-			this.x = x;
-			this.y = y;
-		}
+		this.x = x;
+		this.y = y;
 		this.z = z;
 	}
 	

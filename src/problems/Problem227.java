@@ -11,7 +11,7 @@ public class Problem227 {
 	static final int PLAYERS = 100;
 	static final int MAX_DIFF = PLAYERS/2;
 
-	static final double ÅTTE_TRETTISEKSDELER = 8.0/36.0;
+	static final double AATTE_TRETTISEKSDELER = 8.0/36.0;
 	static final double EN_TRETTISEKSDEL = 1.0/36.0;
 	
 	static Map<Double, Double> memoize = new HashMap<Double, Double>();
@@ -37,8 +37,8 @@ public class Problem227 {
 		++turns;
 		double expected = 0;
 		expected += prob(prob*0.5, diff, turns);
-		expected += prob(prob*ÅTTE_TRETTISEKSDELER, diff+1, turns);
-		expected += prob(prob*ÅTTE_TRETTISEKSDELER, diff-1, turns);
+		expected += prob(prob*AATTE_TRETTISEKSDELER, diff+1, turns);
+		expected += prob(prob*AATTE_TRETTISEKSDELER, diff-1, turns);
 		expected += prob(prob*EN_TRETTISEKSDEL, diff+2, turns);
 		expected += prob(prob*EN_TRETTISEKSDEL, diff-2, turns);
 		memoize.put(memo, expected);

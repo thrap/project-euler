@@ -419,7 +419,7 @@ public class Test {
 		System.out.println(forste);
 	}
 	
-	public static int divisorSumDårlig(int tall) {
+	public static int divisorSumDaarlig(int tall) {
 		int sum = 0;
 		for (int i = 1; i <= tall/2; i++) {
 			if (tall % i == 0) {
@@ -435,7 +435,7 @@ public class Test {
 //			System.out.println(cLav);
 			if (sjekkForste(fibonacciNesteH0y())) {
 //				System.out.println(cH0y);
-				System.out.println("Første: "+i);
+				System.out.println("Fï¿½rste: "+i);
 				a=true;
 //				break;
 			}
