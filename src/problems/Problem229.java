@@ -8,15 +8,6 @@ import utils.T;
 
 public class Problem229 {
 	
-	/**
-	 * http://math.uga.edu/~pete/thuelemmav7.pdf
-	 * 
-	 * denne lager alt for stor stack. fix plx
-	 */
-
-    /**
-     * Denne scaler bra
-     */
     private static class CandidateGenerator {
         private List<Long> primes = new ArrayList<Long>();
         public CandidateGenerator() {
@@ -48,9 +39,6 @@ public class Problem229 {
         }
     }
 
-    /**
-     * Denne lager for stor stack
-     */
     private static class SpecialGenerator {
         private List<Long> primes = new ArrayList<Long>();
         public SpecialGenerator() {
@@ -101,7 +89,7 @@ public class Problem229 {
         for (long a : candidates) {
             if (isBruteSpecial(a))
                 count++;
-            //binærsøk her breh
+            //should use binary search here
             for (long b : specials) {
                 if (b * a > limit)
                     break;
@@ -109,7 +97,6 @@ public class Problem229 {
             }
         }
         System.out.println(count + " " + t);
-        System.out.println(specials.size());
     }
 	
 	private static boolean isBruteSpecial(long n) {
