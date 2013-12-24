@@ -14,6 +14,9 @@ public class Problem229 {
 	 * denne lager alt for stor stack. fix plx
 	 */
 
+    /**
+     * Denne scaler bra
+     */
     private static class CandidateGenerator {
         private List<Long> primes = new ArrayList<Long>();
         public CandidateGenerator() {
@@ -21,6 +24,7 @@ public class Problem229 {
                 if (isCritical(p))
                     primes.add(p);
             }
+            System.out.println(primes.size());
         }
 
         private void generateCandidates(long n, int i, List<Long> candidates) {
@@ -44,50 +48,59 @@ public class Problem229 {
         }
     }
 
+    /**
+     * Denne lager for stor stack
+     */
     private static class SpecialGenerator {
         private List<Long> primes = new ArrayList<Long>();
         public SpecialGenerator() {
-            for (long p : Euler.primeList(limit)) {
-                if (!isCritical(p))
-                    primes.add(p);
-            }
-        }
-
-        private void generateSpecials(long n, int i, List<Long> specials) {
-            if (i == primes.size() || primes.get(i)*n > limit) {
-                specials.add(n);
-            } else {
-                long p = primes.get(i);
-
-                for (int j = 0; n*Math.pow(p, j) <= limit; j++) {
-                    generateSpecials(n * (long) Math.pow(p, j), i + 1, specials);
+            for(int i = 0; i<10; i++) {
+                System.out.println("Generating primes: "+(i+1)+"/10 ("+primes.size()+")");
+                for (long p : Euler.primeListBetween((limit/10)*i, (limit/10)*(i+1))) {
+                    if (!isCritical(p) && p != 1)
+                        primes.add(p);
                 }
             }
         }
 
         public List<Long> getSpecials() {
-            List<Long> specials = new ArrayList<Long>();
+            List<Long> specials = primes;
 
-            generateSpecials(1, 0, specials);
-            specials.remove(0);
-            Collections.sort(specials);
+            boolean changed;
+            int start = 0;
+            do {
+                changed = false;
+                List<Long> newSpecials = new ArrayList<Long>();
+                long num = specials.get(start);
+                long number = num;
+                for(; number < limit; number*=num) {
+                    for(int i = start; specials.get(i)*number < limit; i++) {
+                        newSpecials.add(number*specials.get(i));
+                        changed = true;
+                    }
+                }
+                specials.addAll(newSpecials);
+                Collections.sort(specials);
+                System.out.println("New Specials: "+newSpecials.size());
+                start++;
+            } while(changed);
 
-            return specials;
+            return new ArrayList<Long>(new TreeSet<Long>(specials));
         }
     }
 
-	static int limit = (int)Math.pow(10, 6);
+	static int limit = 2*(int)Math.pow(10, 9);
 	public static void main(String[] args) {
-		T t = new T();
+        System.out.println(limit);
+        T t = new T();
 
-        List<Long> specials = new SpecialGenerator().getSpecials();
         List<Long> candidates = new CandidateGenerator().getCandidates();
+        List<Long> specials = new SpecialGenerator().getSpecials();
 
         int count = 0;
         for (long a : candidates) {
             if (isBruteSpecial(a))
                 count++;
-
             //binærsøk her breh
             for (long b : specials) {
                 if (b * a > limit)
