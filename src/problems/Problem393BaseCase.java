@@ -4,7 +4,7 @@ import utils.T;
 
 import java.util.*;
 
-public class Problem393 {
+public class Problem393BaseCase {
 
     static final int NORTH = 0;
     static final int SOUTH = 1;
@@ -31,7 +31,7 @@ public class Problem393 {
         }
     }
 
-    static int n = 4;
+    static int n = 6;
 
     public static void main(String[] args) {
         T t = new T();
@@ -98,8 +98,9 @@ public class Problem393 {
 
     private static void move(int x, int y, Way way, Set<Way>[][] ants, boolean[][] hasMoved, int count) {
         hasMoved[x][y] = true;
-        Set<Way> target = ants[x+way.x][y+way.y];
-        target.remove(way.getOposite());
+
+        ants[x+way.x][y+way.y].remove(way.getOposite());
+
         for(Way targetWay : Way.values()) {
             int dx = way.x+targetWay.x;
             int dy = way.y+targetWay.y;
@@ -115,16 +116,15 @@ public class Problem393 {
     private static Set<Way>[][] deepCopy(Set<Way>[][] arr) {
         Set<Way>[][] copy = new Set[n][n];
         for(int i = 0; i<n; i++)
-           for(int j = 0; j<n; j++)
-               copy[i][j] = new HashSet<Way>(arr[i][j]);
+            for(int j = 0; j<n; j++)
+                copy[i][j] = new HashSet<Way>(arr[i][j]);
         return copy;
     }
 
     private static boolean[][] deepCopy(boolean[][] arr) {
         boolean[][] copy = new boolean[n][n];
         for(int i = 0; i<n; i++)
-           for(int j = 0; j<n; j++)
-               copy[i][j] = arr[i][j];
+            copy[i] = Arrays.copyOf(arr[i], n);
         return copy;
     }
 }
