@@ -1,16 +1,10 @@
 package problems;
 
-import utils.Euler;
 import utils.T;
 
 import java.util.*;
 
 public class Problem393 {
-
-    static final int NORTH = 0;
-    static final int SOUTH = 1;
-    static final int WEST = 2;
-    static final int EAST = 3;
 
     private static enum Way {
         NORTH(0,-1), SOUTH(0,1), WEST(-1,0), EAST(1,0);
@@ -32,7 +26,7 @@ public class Problem393 {
         }
     }
 
-    static int n = 6;
+    static int n = 8;
 
     public static void main(String[] args) {
         T t = new T();
@@ -88,7 +82,7 @@ public class Problem393 {
         long count = 0;
         boolean[][] newMoved = deepCopy(hasMoved);
         newMoved[leastX][leastY] = true;
-        
+
         for(Way way : ants[leastX][leastY]) {
             count += move(leastX, leastY, way, deepCopy(ants), newMoved, depth);
         }
