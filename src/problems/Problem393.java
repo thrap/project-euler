@@ -9,10 +9,10 @@ public class Problem393 {
     private static enum Way {
         NORTH(0,-1), SOUTH(0,1), WEST(-1,0), EAST(1,0);
 
-        int x,y;
-        Way(int x, int y) {
-            this.x = x;
-            this.y = y;
+        int dx, dy;
+        Way(int dx, int dy) {
+            this.dx = dx;
+            this.dy = dy;
         }
 
         public Way getOposite() {
@@ -100,11 +100,11 @@ public class Problem393 {
     }
 
     private static long move(int x, int y, Way way, Set<Way>[][] ants, boolean[][] hasMoved, int count) {
-        ants[x+way.x][y+way.y].remove(way.getOposite());
+        ants[x+way.dx][y+way.dy].remove(way.getOposite());
 
         for(Way targetWay : Way.values()) {
-            int dx = way.x+targetWay.x;
-            int dy = way.y+targetWay.y;
+            int dx = way.dx +targetWay.dx;
+            int dy = way.dy +targetWay.dy;
             if (x + dx >= 0 && x + dx < n && y+dy >= 0 && y+dy < n)
                 ants[x+dx][y+dy].remove(targetWay.getOposite());
         }
