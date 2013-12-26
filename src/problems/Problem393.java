@@ -72,13 +72,13 @@ public class Problem393 {
         }
         int leastX = -1;
         int leastY = -1;
-        int moves = Integer.MAX_VALUE;
+        int minMoves = Integer.MAX_VALUE;
 
 
         for (int x = 0; x < n; x++) {
             for (int y = 0; y < n; y++) {
-                if (!hasMoved[x][y] && (ants[x][y].size() < moves || (ants[x][y].size() == moves && x != 0 && y != 0 && y != n-1 && x != n-1))) {
-                    moves = ants[x][y].size();
+                if (!hasMoved[x][y] && (ants[x][y].size() < minMoves || (ants[x][y].size() == minMoves && x != 0 && y != 0 && y != n-1 && x != n-1))) {
+                    minMoves = ants[x][y].size();
                     leastX = x;
                     leastY = y;
                 }
@@ -86,8 +86,11 @@ public class Problem393 {
         }
 
         long count = 0;
+        boolean[][] newMoved = deepCopy(hasMoved);
+        newMoved[leastX][leastY] = true;
+        
         for(Way way : ants[leastX][leastY]) {
-            count += move(leastX, leastY, way, deepCopy(ants), deepCopy(hasMoved), depth);
+            count += move(leastX, leastY, way, deepCopy(ants), newMoved, depth);
         }
         return count;
     }
@@ -103,8 +106,6 @@ public class Problem393 {
     }
 
     private static long move(int x, int y, Way way, Set<Way>[][] ants, boolean[][] hasMoved, int count) {
-        hasMoved[x][y] = true;
-
         ants[x+way.x][y+way.y].remove(way.getOposite());
 
         for(Way targetWay : Way.values()) {
