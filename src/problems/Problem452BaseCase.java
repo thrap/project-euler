@@ -6,7 +6,7 @@ import utils.T;
 import java.math.BigInteger;
 import java.util.*;
 
-public class Problem452 {
+public class Problem452BaseCase {
 
     static int m = (int)Math.pow(10, 6);
     static int n = m;
@@ -35,12 +35,15 @@ public class Problem452 {
 
     static long count = 0;
     static Map<String, Long> memoize = new HashMap<String, Long>();
+    static int memoed = 0;
 
     private static void registerTuple(List<Integer> tuple) {
         String memo = tuple.toString();
         if (memoize.containsKey(memo)) {
-            Problem452.count += memoize.get(memo);
-            Problem452.count %= mod;
+            if (++memoed % 100000 == 0)
+                System.out.println(memoed);
+            Problem452BaseCase.count += memoize.get(memo);
+            Problem452BaseCase.count %= mod;
             return;
         }
 
@@ -58,8 +61,8 @@ public class Problem452 {
         System.out.println(tuple + " "+count);
         long l = count.mod(BigInteger.valueOf(mod)).longValue();
         memoize.put(memo, l);
-        Problem452.count += l;
-        Problem452.count %= mod;
+        Problem452BaseCase.count += l;
+        Problem452BaseCase.count %= mod;
     }
 
     static Map<Integer, BigInteger> countMemoize = new HashMap<Integer, BigInteger>();
