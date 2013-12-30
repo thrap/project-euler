@@ -8,8 +8,8 @@ import java.util.*;
 
 public class Problem452 {
 
-    static int m = 10;
-    static int n = 10;
+    static int m = (int)Math.pow(10, 6);
+    static int n = m;
     public static void main(String[] args) {
         T t = new T();
         recurse(1,2, new ArrayList<Integer>());
@@ -31,32 +31,41 @@ public class Problem452 {
     }
 
     static BigInteger count = BigInteger.ZERO;
-    private static void registerTuple(List<Integer> list) {
+    static Map<String, BigInteger> memoize = new HashMap<String, BigInteger>();
+    private static void registerTuple(List<Integer> tuple) {
+        Collections.sort(tuple);
+        String memo = tuple.toString();
+        if (memoize.containsKey(memo)) {
+            Problem452.count = Problem452.count.add(memoize.get(memo));
+            return;
+        }
 
+        System.out.println(tuple);
         int others = 0;
-        for(int value : list) {
+        for(int value : tuple) {
             others += value;
         }
 
         BigInteger count = getCount(others);
 
-        for(int value : list) {
+        for(int value : tuple) {
             count = count.divide(Euler.factorial(value));
         }
 
+        memoize.put(memo, count);
         Problem452.count = Problem452.count.add(count);
     }
 
-    static Map<Integer, BigInteger> memoize = new HashMap<Integer, BigInteger>();
+    static Map<Integer, BigInteger> countMemoize = new HashMap<Integer, BigInteger>();
     private static BigInteger getCount(int others) {
-        if (memoize.containsKey(others))
-            return memoize.get(others);
+        if (countMemoize.containsKey(others))
+            return countMemoize.get(others);
 
         BigInteger count = BigInteger.ONE;
         for(int i = n; i > n-others; i--) {
             count = count.multiply(BigInteger.valueOf(i));
         }
-        memoize.put(others, count);
+        countMemoize.put(others, count);
         return count;
     }
 }
