@@ -10,16 +10,19 @@ public class Problem452 {
 
     static int m = (int)Math.pow(10, 6);
     static int n = m;
+
+    static long mod = 1234567891;
     public static void main(String[] args) {
         T t = new T();
         recurse(1,2, new ArrayList<Integer>());
-        System.out.println(count.mod(BigInteger.valueOf(1234567891)) + " " + t);
+        System.out.println(count + " " + t);
     }
 
     private static void recurse(long n, int k, List<Integer> tuple) {
         registerTuple(tuple);
         for(int j = k; n*j <= m; j++) {
             List<Integer> newTuple = new ArrayList<Integer>(tuple);
+
             if (j == k) {
                 newTuple.add(newTuple.size() != 0 ? newTuple.remove(newTuple.size() - 1) + 1 : 1);
             } else {
@@ -30,17 +33,17 @@ public class Problem452 {
         }
     }
 
-    static BigInteger count = BigInteger.ZERO;
-    static Map<String, BigInteger> memoize = new HashMap<String, BigInteger>();
+    static long count = 0;
+    static Map<String, Long> memoize = new HashMap<String, Long>();
+
     private static void registerTuple(List<Integer> tuple) {
-        Collections.sort(tuple);
         String memo = tuple.toString();
         if (memoize.containsKey(memo)) {
-            Problem452.count = Problem452.count.add(memoize.get(memo));
+            Problem452.count += memoize.get(memo);
+            Problem452.count %= mod;
             return;
         }
 
-        System.out.println(tuple);
         int others = 0;
         for(int value : tuple) {
             others += value;
@@ -52,8 +55,11 @@ public class Problem452 {
             count = count.divide(Euler.factorial(value));
         }
 
-        memoize.put(memo, count);
-        Problem452.count = Problem452.count.add(count);
+        System.out.println(tuple + " "+count);
+        long l = count.mod(BigInteger.valueOf(mod)).longValue();
+        memoize.put(memo, l);
+        Problem452.count += l;
+        Problem452.count %= mod;
     }
 
     static Map<Integer, BigInteger> countMemoize = new HashMap<Integer, BigInteger>();
