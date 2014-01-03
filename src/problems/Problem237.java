@@ -40,9 +40,11 @@ public class Problem237 {
 
     private static class Column {
         Cell[] column;
+        final int ID;
 
-        public Column(Cell[] column) {
+        public Column(Cell[] column, int id) {
             this.column = column;
+            this.ID = id;
         }
 
         public int leftCount() {
@@ -63,12 +65,22 @@ public class Problem237 {
             return count;
         }
 
-        public boolean fitsRight(Column col) {
+        public boolean fitsRightOf(Column left) {
             for(int i = 0; i < 4; i++) {
-                if (column[i].draw[0].charAt(0) != col.column[i].draw[0].charAt(2))
+                if (column[i].draw[0].charAt(0) != left.column[i].draw[0].charAt(2))
                     return false;
             }
-            return true; 
+
+
+            Column right = this;
+            if (left.ID == 2) {
+                return right.ID != 1 && right.ID != 8 && right.ID != -2;
+            } else if (left.ID == 6) {
+                return right.ID != 4;
+            } else if (left.ID == 14) {
+                return right.ID != 1 && right.ID != 8 && right.ID != -2;
+            }
+            return true;
         }
     }
 
@@ -80,7 +92,46 @@ public class Problem237 {
     public static final Cell F = Cell.F;
 
     public static void main(String[] args) {
-        List<Column> possible = new ArrayList<Column>();
+        getColumns();
+
+        System.out.println(starts.size() + " " + middles.size() + " " + ends.size());
+
+        for(Column start : starts) {
+            recurse(start, Arrays.asList(start));
+        }
+    }
+
+
+    static int count = 0;
+    private static void recurse(Column last, List<Column> columns) {
+        if (columns.size() == 9) {
+            for(Column end : ends) {
+                if (end.fitsRightOf(last)) {
+                    List<Column> newColumns = new ArrayList<Column>(columns);
+                    newColumns.add(end);
+                    print(newColumns);
+                    System.out.println(++count);
+                    System.out.println("++++++++++++++");
+                }
+            }
+            return;
+        }
+        for(Column middle : middles) {
+            if (middle.fitsRightOf(last)) {
+                List<Column> newColumns = new ArrayList<Column>(columns);
+                newColumns.add(middle);
+                recurse((middle.ID == 0 ? last : middle), newColumns);
+            }
+        }
+    }
+
+    private static List<Column> starts = new ArrayList<Column>();
+    private static List<Column> middles = new ArrayList<Column>();
+    private static List<Column> ends = new ArrayList<Column>();
+
+    private static void getColumns() {
+        int endId = -1;
+        int id = 0;
         for(Cell a : Cell.values()) {
             if (!a.fitsBelow(B))
                 continue;
@@ -95,21 +146,24 @@ public class Problem237 {
                             continue;
                         if ((a == F && b == D && c == E && d == C) || (a == E && b == C && c == F && d == D))
                             continue; // Special case
-                        Column col = new Column(new Cell[] {a, b, c, d});
+
+                        Column col = new Column(new Cell[] {a, b, c, d}, id);
                         int right = col.rightCount();
                         int left = col.leftCount();
-                        if ((left == 2 || left == 4) && (right == 2 || right == 4))
-                            possible.add(col);
+                        if ((left == 2 || left == 4) && (right == 2 || right == 4)) {
+                            middles.add(col);
+                            id++;
+                        }
+                        if (right == 0) {
+                            ends.add(new Column(new Cell[]{a, b, c, d}, endId--));
+                        }
+                        if (left == 2 && (right == 2 || right == 4) && a.draw[0].charAt(0) == '_' && d.draw[0].charAt(0) == '_') {
+                            starts.add(col);
+                        }
                     }
                 }
             }
         }
-
-        for(Column col1 : possible) {
-            print(Arrays.asList(col1));
-            System.out.println("+++++++++++++");
-        }
-        System.out.println(possible.size());
     }
 
     private static void print(List<Column> board) {
