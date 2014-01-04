@@ -2,22 +2,22 @@ package problems.problem237;
 
 public enum Cell {
     A(" | ",
-            " | "),
+      " | "),
 
     B("_ _",
-            "   "),
+      "   "),
 
     C("_| ",
-            "   "),
+      "   "),
 
     D(" |_",
-            "   "),
+      "   "),
 
     E("_  ",
-            " | "),
+      " | "),
 
     F("  _",
-            " | ");
+      " | ");
 
     public String[] draw;
     Cell(String... draw) {

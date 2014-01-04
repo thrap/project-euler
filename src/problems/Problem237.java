@@ -12,7 +12,6 @@ public class Problem237 {
     public static List<Column> ends = new ArrayList<Column>();
 
     public static void main(String[] args) {
-        Problem237BaseCase.getColumns();
 
 
     }
