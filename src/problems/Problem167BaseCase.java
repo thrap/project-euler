@@ -13,10 +13,26 @@ public class Problem167BaseCase {
 		 */
 		
 		for (int n = 2; n <= 10; n++) {
-			List<Integer> Us = Us(2, 2*n+1, 100);
-			
-			System.out.println(Us.get(0));
-			System.out.println(Us);
+			List<Integer> Us = Us(2, 2*n+1, 1500);
+
+            System.out.println(Us.get(3+n));
+
+            ytterste:
+            for (int offset = 1; offset < Us.size(); offset++) {
+                int start = 3+n+1;
+                int diff = Us.get(start+offset)-Us.get(start);
+                for(int i = start; i+offset < Us.size(); i++) {
+                    if (diff != Us.get(i+offset)-Us.get(i)) {
+                        break;
+                    }
+                    if (i +offset == Us.size()-1) {
+                        System.out.println(n+": "+offset);
+                        System.out.println("Us(n + "+offset+") = Us(n) + "+diff);
+                        break ytterste;
+                    }
+                }
+            }
+            System.out.println(Us);
 		}
 	}
 	
