@@ -13,7 +13,7 @@ public class Problem167BaseCase {
 		 */
 		
 		for (int n = 2; n <= 10; n++) {
-			List<Integer> Us = Us(2, 2*n+1, 1500);
+			List<Integer> Us = Us(2, 2*n+1, 500);
 
             System.out.println(Us.get(3+n));
 
@@ -35,7 +35,7 @@ public class Problem167BaseCase {
             System.out.println(Us);
 		}
 	}
-	
+
 	public static List<Integer> Us(int a, int b, int count) {
 		List<Integer> list = new ArrayList<Integer>();
 		list.add(a);
