@@ -1,5 +1,7 @@
 package problems;
 
+import utils.T;
+
 import java.util.*;
 
 public class Problem167 {
@@ -7,10 +9,15 @@ public class Problem167 {
     public static void main(String[] args) {
         /**
          * ER KUN 2 PARTALL PER SEKVENS
+         *
+         * indeks for partall: n+3
+         *
+         * problem: finne periode
          */
 
+        T t = new T();
         for (int n = 2; n <= 10; n++) {
-            List<Integer> Us = Us(2, 2*n+1, 30000);
+            List<Integer> Us = Us(2, 2*n+1, 20000);
 
             System.out.println(Us.get(3+n));
 
@@ -29,8 +36,9 @@ public class Problem167 {
                     }
                 }
             }
-            System.out.println(Us);
+//            System.out.println(Us);
         }
+        System.out.println(t);
     }
 
     public static List<Integer> Us(int a, int b, int limit) {
@@ -46,11 +54,13 @@ public class Problem167 {
                 int count = 0;
                 for (int i = 0; i < U.size(); i++) {
                     int u1 = U.get(i);
+                    if (2*u1 >= next)
+                        break;
                     if (numbers.contains(next-u1)) {
                         count++;
                     }
                 }
-                if (count == 2) {
+                if (count == 1) {
                     break;
                 }
             }
