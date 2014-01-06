@@ -6,7 +6,7 @@ import java.util.*;
 
 public class Problem184 {
 	
-	private static final int r = 5;
+	private static final int r = 8;
 
 	public static void main(String[] args) {
         List<Point> points = new ArrayList<Point>();
@@ -17,6 +17,10 @@ public class Problem184 {
                 points.add(new Point(x, y));
 			}
 		}
+
+        /**
+         * (ax * by > ay * bx) == (bx * cy > by * cx) == (cx * ay > cy * ax)
+         */
 
         Set<String> tris = new HashSet<String>();
         for(Point a : points) {
