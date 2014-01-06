@@ -73,8 +73,7 @@ public class Problem167 {
 
             for(int next = last+1; true; next++) {
                 int count = 0;
-                for (int i = 0; i < U.size(); i++) {
-                    int u1 = U.get(i);
+                for (int u1 : U) {
                     if (numbers.contains(next-u1)) {
                         count++;
                     }
