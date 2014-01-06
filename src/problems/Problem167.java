@@ -69,28 +69,22 @@ public class Problem167 {
         Set<Integer> numbers = new HashSet<Integer>(U);
 
         while(U.size() < limit) {
-            if (U.size() % 10000 == 0)
-                System.out.println(U.size());
             int last = U.get(U.size()-1);
 
-            int next;
-            for(next = last+(last > 100 ? 2 : 1); true; next+= (last > 100 ? 2 : 1)) {
+            for(int next = last+1; true; next++) {
                 int count = 0;
                 for (int i = 0; i < U.size(); i++) {
                     int u1 = U.get(i);
-                    if (2*u1 >= next)
-                        break;
                     if (numbers.contains(next-u1)) {
                         count++;
                     }
                 }
-                if (count == 1) {
+                if (count == 2) {
+                    U.add(next);
+                    numbers.add(next);
                     break;
                 }
             }
-
-            U.add(next);
-            numbers.add(next);
         }
         return U;
     }
