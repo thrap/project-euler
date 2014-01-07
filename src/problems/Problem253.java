@@ -55,8 +55,8 @@ public class Problem253 {
     private static int M(int[] arr) {
         List<Segment> segments = new ArrayList<Segment>();
         int M = 0;
-        for (int i = 0; i<arr.length; i++) {
-            segments.add(new Segment(arr[i]));
+        for (int piece : arr) {
+            segments.add(new Segment(piece));
             merge(segments);
             M = Math.max(M, segments.size());
         }
