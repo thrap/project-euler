@@ -2,11 +2,7 @@ package utils;
 
 import java.io.IOException;
 import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Euler {
 
@@ -17,7 +13,6 @@ public class Euler {
 		for (int i = 1; i <= 10; i++) {
 			printMatrix(matrixPow(new long[][] {{1,1}, {1,0}},i,(long)Math.pow(10, 15)));
 		}
-		
 	}
 	
 	public static long fib(long n) {
@@ -55,6 +50,19 @@ public class Euler {
 		
 		return result;
 	}
+
+    public static void shuffle(int[] array) {
+        int index;
+        Random random = new Random();
+        for (int i = array.length - 1; i > 0; i--) {
+            index = random.nextInt(i + 1);
+            if (index != i) {
+                array[index] ^= array[i];
+                array[i] ^= array[index];
+                array[index] ^= array[i];
+            }
+        }
+    }
 	
 	public static void printMatrix(long[][] A) {
 		for (int i = 0; i < A.length; i++) {
