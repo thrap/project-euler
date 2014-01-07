@@ -1,6 +1,7 @@
 package problems;
 
 import utils.Euler;
+import utils.Rational;
 import utils.T;
 
 import java.util.*;
@@ -19,10 +20,14 @@ public class Problem253 {
             count.put(M, count.containsKey(M) ? count.get(M) + 1 : 1);
         } while (Euler.permute(arr, arr.length));
 
+        int total = 0;
         for(int M : count.keySet()) {
             System.out.println(M + " " + count.get(M));
+            total += M*count.get(M);
         }
-        System.out.println(t);
+        int possibilities = Euler.factorial(arr.length).intValue();
+        Rational average = new Rational(total, possibilities);
+        System.out.println(average + " = "+average.doubleValue() + " " + t);
     }
 
     private static class Segment {
