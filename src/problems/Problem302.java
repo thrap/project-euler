@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Problem302 {
 
-    private static long limit = (long)Math.pow(10, 9);
+    private static long limit = (long)Math.pow(10, 8);
     private static List<Integer> primes = Euler.primeList((int)Math.sqrt(limit/4)+1);
     public static void main(String[] args) {
         T t = new T();
@@ -40,11 +40,19 @@ public class Problem302 {
 
     private static boolean isAchilles(long n) {
         List<Integer> values = new ArrayList<Integer>(Euler.primeFactorMap((int) n).values());
+        return isPowerful(values) && !isPerfect(values);
+    }
+
+    private static boolean isPerfect(List<Integer> values) {
+        return gcd(values, 0) != 1;
+    }
+
+    private static boolean isPowerful(List<Integer> values) {
         for(int exp : values) {
             if (exp == 1)
                 return false;
         }
-        return gcd(values, 0) == 1;
+        return true;
     }
 
     private static int gcd(List<Integer> values, int i) {
