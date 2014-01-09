@@ -70,7 +70,8 @@ public class Rational extends Number {
 	    }
 	    return a;
 	}
-	
+
+    @Override
 	public String toString() {
 		if (d == 1)
 			return ""+n;
@@ -96,4 +97,18 @@ public class Rational extends Number {
 	public long longValue() {
 		return n/d;
 	}
+
+    @Override
+    public int hashCode() {
+        return this.toString().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Rational)) {
+            return false;
+        }
+        Rational r = (Rational)o;
+        return this.n == r.n && this.d == r.d;
+    }
 }
