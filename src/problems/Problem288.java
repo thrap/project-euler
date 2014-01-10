@@ -11,9 +11,7 @@ public class Problem288 {
     }
 
     private static long NF(int p, long q, long mod) {
-        long NF = 0;
-        long pow = 1;
-        long S = 290797;
+        long NF = 0, pow = 1, S = 290797;
         for (int n = 0; n <= q; n++, pow = (pow * p) % mod, S = (S*S)%50515093) {
             NF = (NF + (S%p)*((pow + (pow == 0 ? mod : 0) - 1)/(p-1))) % mod;
         }
