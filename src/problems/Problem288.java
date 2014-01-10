@@ -1,23 +1,10 @@
 package problems;
 
-import utils.Euler;
 import utils.T;
 
 import java.math.BigInteger;
 
-import static java.math.BigInteger.valueOf;
-
 public class Problem288 {
-
-    private static class Sn {
-        long last = 290797;
-
-        public long next() {
-            long temp = last;
-            this.last = (last*last)%50515093;
-            return temp;
-        }
-    }
 
     private static class Tn {
         private final int p;
@@ -35,22 +22,16 @@ public class Problem288 {
 
     public static void main(String[] args) {
         T t = new T();
-        System.out.println(NF(61,(long)Math.pow(10,7), BigInteger.valueOf(61).pow(10)) + " " + t);
+        System.out.println(NF(61,(long)Math.pow(10,7), BigInteger.valueOf(61).pow(10).longValue()) + " " + t);
     }
 
-    private static BigInteger NF(int p, long q, BigInteger mod) {
+    private static long NF(int p, long q, long mod) {
         Tn T = new Tn(p);
-        BigInteger nf = BigInteger.ZERO;
-        BigInteger P = valueOf(p);
-        for (int n = 0; n <= q; n++) {
-            if (n % 1000000 == 0)
-                System.out.println(n/1000000 +"/"+q/1000000);
-            long t = T.next();
-            BigInteger modPow = P.modPow(valueOf(n), mod);
-            if (modPow.equals(BigInteger.ZERO))
-                modPow = modPow.add(mod);
-            nf = (nf.add(valueOf(t).multiply((modPow.subtract(BigInteger.ONE)).divide(valueOf(p-1)).mod(mod))));
+        long NF = 0;
+        long modP = 1;
+        for (int n = 0; n <= q; n++, modP = (modP * p) % mod) {
+            NF = (NF + T.next()*((modP + (modP == 0 ? mod : 0) - 1)/(p-1))) % mod;
         }
-        return nf.mod(mod);
+        return NF;
     }
 }
