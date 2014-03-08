@@ -13,7 +13,7 @@ public class Problem143BaseCase {
 			this.y = y;
 		}
 		
-		//C = (b^2+a^2-c^2)/2a, ±sqrt(b^2-x^2))
+		//C = (b^2+a^2-c^2)/2a, sqrt(b^2-x^2))
 		public Point (double a, double b, double c) {
 			this.x = (b*b+a*a-c*c)/(2*a);
 			this.y = Math.sqrt(b*b-x*x);
@@ -70,9 +70,6 @@ public class Problem143BaseCase {
 	}
 	private static boolean PRINT_FOR_MATLAB = false;
 	public static void main(String[] args) {
-		/**
-		 * dette løser basecase, men går for tregt til å løse en dritt ellers. finn på noe smart du hæhæ
-		 */
 		int a = 399, b = 455, c = 511;
 		Point A = new Point(0, 0);
 		Point B = new Point(c, 0);

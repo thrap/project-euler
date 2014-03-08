@@ -81,7 +81,7 @@ public class Problem304 {
 		}
 		
 		/**
-		 * REPETERER SEG PÅ 900788112!!!!!!!!!!!11111
+		 * REPETERER SEG PAA 900788112!!!!!!!!!!!11111
 		 */
 		long sum = 0;
 		for (int i = 2; i < 900788111+100; i++) {

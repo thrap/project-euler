@@ -8,7 +8,7 @@ public class Problem110 {
 	public static void main(String[] args) {
 		/**
 		 * 
-		 * Antall løsninger = (antDivisorer(tall^2)-1)/2
+		 * Antall losninger = (antDivisorer(tall^2)-1)/2
 		 * 
 		 */
 		System.out.println(solution());

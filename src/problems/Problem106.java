@@ -49,7 +49,7 @@ public class Problem106 {
 	}
 
 	/**
-	 * til future pissern: dette funker, men er lite vakker og er bare Œ drite i Œ sette seg inn i egentlig
+	 * til future pissern: dette funker, men er lite vakker og er bare Ã¥ drite i aa sette seg inn i egentlig
 	 */
 	public static Set<String> getSubsetPairs(int n) {
 		Set<String> pairs = new TreeSet<String>();

@@ -3,7 +3,7 @@ package problems;
 
 public class Problem390 {
 	/**
-	 * l¿ste denne i C
+	 * loeste denne i C
 	 * 
 	 * gikk for tregt med bigint og long var for liten ugg ugg
 	 */

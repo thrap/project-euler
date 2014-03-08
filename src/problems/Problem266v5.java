@@ -37,7 +37,7 @@ public class Problem266v5 {
 	
 	static Set<String> memo = new HashSet<String>();
 	
-	//TODO: Denne failer på grunn av at den kun sjekker tall opphøyd i 1 eller 0, og ikke feks 2^10 = 1024
+	//TODO: Denne failer paa grunn av at den kun sjekker tall opphoeyd i 1 eller 0, og ikke feks 2^10 = 1024
 	public static void recursion(int index, BigInteger sum) {
 		String mem = sum.toString() + " " + index;
 		if (memo.contains(mem))

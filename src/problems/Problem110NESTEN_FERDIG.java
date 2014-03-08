@@ -13,11 +13,10 @@ public class Problem110NESTEN_FERDIG {
 //		2^2x3^2x5^1x7^1 = (2*2+1)*(2*2+1)*(2*1+1)*(2*1+1)
 //		System.out.println((2*2+1)*(2*2+1));
 //		2*3*4*5*6*7*8*9*...
-//		2*3 base = 2*3, høyeste = 3
-		
+
 		/**
 		 * 
-		 * Antall løsninger = (antDivisorer(tall^2)-1)/2
+		 * Antall losninger = (antDivisorer(tall^2)-1)/2
 		 * 
 		 */
 //		antall 

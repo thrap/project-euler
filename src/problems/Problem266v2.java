@@ -30,7 +30,7 @@ public class Problem266v2 {
 			}
 		});
 		
-		//TODO: rofl dette funker jo faktisk ikke og går i loop lizm hæhæh xD
+		//TODO: rofl dette funker jo faktisk ikke og gaar i loop lizm xD
 		set.addAll(primes);
 		int i = 0;
 		while(true) {
@@ -38,7 +38,7 @@ public class Problem266v2 {
 			set.remove(first);
 			if (++i % 100000 == 0) {
 				System.out.println("------------------");
-				System.out.println("Første: "+first);
+				System.out.println("Frste: "+first);
 				System.out.println("Antall: " + set.size());
 				System.out.println("Beste:  "+best);
 				System.out.println("Goal:   "+goal);

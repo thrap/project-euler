@@ -53,7 +53,7 @@ public class Problem387 {
 			list.add(i);
 		}
 		
-		//rofl hvofor faen får den ikke med 181???
+		//rofl hvofor faen foer den ikke med 181???
 		BigInteger sum = BigInteger.valueOf(181);
 		for (int siffer = 1; siffer <= 14-1; siffer++) {
 			System.out.println(siffer + " " + sum);

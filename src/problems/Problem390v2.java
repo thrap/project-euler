@@ -5,7 +5,7 @@ import utils.T;
 
 public class Problem390v2 {
 	public static void main(String[] args) {
-		//(c^2+b^2+(2*c*b)^2) må være perfect square
+		//(c^2+b^2+(2*c*b)^2) maa vaere perfect square
 		T t = new T();
 		long limit = (long) Math.pow(10, 6);
 		long areaLimit = limit*limit;

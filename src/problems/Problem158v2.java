@@ -14,7 +14,7 @@ public class Problem158v2 {
 			long count = 0;
 			for (criticalIndex = 1; criticalIndex < N; criticalIndex++) {
 				// System.out.println(criticalIndex);
-				// perms f¿r * perms etter
+				// perms foer * perms etter
 				for (char c = 'a'; c <= 'z'; c++) {
 					count += count("" + c, c, 1);
 				}

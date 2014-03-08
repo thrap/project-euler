@@ -47,7 +47,7 @@ public class Problem224BaseCase {
 		}
 		
 		if (!correctPoints.containsAll(set)) {
-			System.out.print("Din j¾vla pelle, correctPoints skal inneholde alle points");
+			System.out.print("Din jaevla pelle, correctPoints skal inneholde alle points");
 			System.exit(0);
 		}
 		System.out.println("generert antall: "+set.size() + " " + t2);

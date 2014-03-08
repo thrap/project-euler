@@ -51,7 +51,7 @@ public class Problem414Siste {
 			 * 
 			 * denne er litt retard xD se metode under
 			 */
-			//de f¿rste (base) sifferene
+			//de frste (base) sifferene
 			long[] perms = new long[base];
 			for (long i = 2; (i-1) < base; i++) {
 				long number = ((2*base-i)*(i-1))*5;

@@ -32,7 +32,6 @@ public class Problem146 {
 		[10, 315410, 927070, 2525870, 8146100, 16755190, 39313460]
 		 */
 		
-		//må være delelig på 2 og 5 iaf = delelig på 10
 		long sum = 0;
 		List<Long> list = new ArrayList<Long>();
 		int tre = 0;
@@ -63,23 +62,6 @@ public class Problem146 {
 				if ((prod+27)%prime == 0) 
 					continue ytterste;
 			}
-//			
-//			switch ((int)((n*n)%7)) {
-//			case 6: case 4: case 0: case 5: case 1: ++syv; continue;
-//			}
-//			
-//			switch ((int)((n*n)%11)) {
-//			case 10: case 8: case 6: case 4: case 2: case 9: ++elve; continue;
-//			}
-//			
-//			switch ((int)((n*n)%13)) {
-//			case 12: case 10: case 6: case 4: case 0: ++elve; continue;
-//			}
-//			
-//			switch ((int)((n*n)%17)) {
-//			case 16: case 14: case 10: case 8: case 4: case 7: ++elve; continue;
-//			}
-			
 			for (int i = 27; i >= 1; i-=2) {
 				if (i != 1 && i != 3 && i != 7 && i != 9 && i != 13 && i != 27) {
 					if (isPrime(n*n+i))
@@ -89,8 +71,6 @@ public class Problem146 {
 			list.add(n);
 			sum+=n;
 		}
-//		System.out.println(sum);
-//		System.out.println(list);
 		return sum;
 	}
 }

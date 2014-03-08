@@ -42,11 +42,6 @@ public class Problem212Observation {
 			return new Cuboid(x,y,z, dx,dy,dz);
 		}
 		
-		/**
-		 * her har du en jobb å gjøre.
-		 * 
-		 * denne må returnere x antall cuboids som ikke intersecter. får du til detta blir det grønn mann
-		 */
 		public Collection<Cuboid> getNewCuboids(Cuboid c) {
 			return null;
 		}

@@ -13,9 +13,9 @@ import utils.Euler;
 public class Problem273 {
 	public static void main(String[] args) throws IOException {
 		/**
-		 * getNS funker som faen lizm, S(N) igjen da.. hæhæ
+		 * getNS funker som faen lizm, S(N) igjen da..
 		 * 
-		 * denne likner veldig på 233?
+		 * denne likner veldig p 233?
 		 * 
 		 * 
 		 	sum = 0;
@@ -39,7 +39,7 @@ public class Problem273 {
 		BufferedWriter pw = new BufferedWriter(new PrintWriter("/Users/thrap/Dropbox/Project Euler/problem273.txt"));
 		pw.write(a.toString());
 		pw.close();
-		System.out.println(count + " tall å sjekke (2^" + getPrimes().size()+")");
+		System.out.println(count + " tall aa sjekke (2^" + getPrimes().size()+")");
 	}
 	
 

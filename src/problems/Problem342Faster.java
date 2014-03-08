@@ -14,7 +14,7 @@ public class Problem342Faster {
 	public static void main(String[] args) {
 		
 		/**
-		 * TODO: ta en titt pŒ hvordan primtall som er gangstere: feks 271, 251, 19 osv
+		 * TODO: ta en titt paa hvordan primtall som er gangstere: feks 271, 251, 19 osv
 		 */
 		
 		/**
@@ -30,7 +30,7 @@ public class Problem342Faster {
 		 * 
 		 * phi(k) alltid partall for k>=3
 		 * 
-		 * For Œ l¿se denne: 
+		 * For aa lse denne:
 		 * Finne primefactorsbetween gjennom Sieve med cachet primtall under sqrt(10^10)=10^5 og teste mot likning over
 		 */
 		T t = new T();

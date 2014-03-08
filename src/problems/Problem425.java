@@ -16,15 +16,15 @@ public class Problem425 {
 		List<Integer> primes = Euler.primeList(n);
 		int i = 0;
 		/** 
-		 * er alle relations større er det ikke mulig
+		 * er alle relations strre er det ikke mulig
 		 * 
 		 *******************************
 		 * 
-		 * SE PÅ TALLET 103
+		 * SE P TALLET 103
 		 * 
 		 * lagre laveste connection til 2 lizm det blir bra
 		 * 
-		 * dette er fantastisk dårlig kode haha men funker som faen
+		 * dette er fantastisk drlig kode haha men funker som faen
 		 * 
 		 ******************************* 
 		 *

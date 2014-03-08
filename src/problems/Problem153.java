@@ -39,7 +39,7 @@ public class Problem153 {
 //				r*r - i*(-i)
 				long ant;
 				for (int j = 1; (ant=limit/(j*(r*r + i*i))) != 0; j++) {
-					sum+=2*ant*j*(r + i); //2 = for pluss og minus, r+i = for å unngå dobbel loop til limit/2
+					sum+=2*ant*j*(r + i); //2 = for pluss og minus, r+i = for aa unngaa dobbel loop til limit/2
 				}
 			}
 		}

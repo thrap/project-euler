@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 
 public class Problem271 {
 	/**
-	 * j¾vla mathematica :p
+	 * jaevla mathematica :p
 	 * 
 	 * n = 13082761331670030;
 	 * Reduce[Mod[x^3 , n] == 1 && 1 < x < n, x, Integers]

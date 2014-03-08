@@ -13,7 +13,7 @@ public class Problem403BaseCase {
 		long sum = 0;
 		
 		/**
-		 * denne går tregt fordi a*a+4*b sjelden blir perfect squares
+		 * denne gr tregt fordi a*a+4*b sjelden blir perfect squares
 		 */
 		T t1 = new T();
 		
@@ -48,7 +48,7 @@ public class Problem403BaseCase {
 	 * denne funker gull inntil videre
 	 */
 	private static long L(long a, long b) {
-		//disse går bra fordi perfect square
+		//disse gr bra fordi perfect square
 		long lower = (a - (long)Math.sqrt(a*a+4*b))/2;
 		long upper = (a + (long)Math.sqrt(a*a+4*b))/2;
 		

@@ -6,7 +6,7 @@ import utils.T;
 public class Problem245Observations {
 	public static void main(String[] args) {
 		/**
-		 * alle faktorer er i f¿rste
+		 * alle faktorer er i foerste
 		 * 
 		 * n = p1*p2*..*pk
 		 * phi(n) = phi(p1)*phi(p2)..*phi(pk)

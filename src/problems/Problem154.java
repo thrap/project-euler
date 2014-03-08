@@ -29,7 +29,7 @@ public class Problem154 {
 					antall += perms(a,b,c);
 				}
 //				System.out.println(perms(a,b,c));
-				//om (a+b+c)!/(a!*b!*c!) er delelig på 10^12 er det god stæmning
+				//om (a+b+c)!/(a!*b!*c!) er delelig paa 10^12 er det god staemning
 //				System.out.println(faktor(a,b,c)+" x^"+a + " y^"+b+" z^"+c);
 			}
 		}

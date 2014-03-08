@@ -20,7 +20,7 @@ public class PossibleValues {
 			if (possible[c-'A'][i])
 				return i;
 		}
-		throw new RuntimeException("NŒ har det skjedd noe feil");
+		throw new RuntimeException("N har det skjedd noe feil");
 	}
 
 	public int getMaxValue(char c) {
@@ -28,7 +28,7 @@ public class PossibleValues {
 			if (possible[c-'A'][i])
 				return i;
 		}
-		throw new RuntimeException("NŒ har det skjedd noe feil");
+		throw new RuntimeException("N har det skjedd noe feil");
 	}
 
 	public int getMinPositiveValue(char c) {
@@ -36,7 +36,7 @@ public class PossibleValues {
 			if (possible[c-'A'][i])
 				return i;
 		}
-		throw new RuntimeException("NŒ har det skjedd noe feil");
+		throw new RuntimeException("N har det skjedd noe feil");
 	}
 	
 	public int getMinValueOver(char c, int number) {
@@ -44,7 +44,7 @@ public class PossibleValues {
 			if (possible[c-'A'][i])
 				return i;
 		}
-		throw new RuntimeException("NŒ har det skjedd noe feil");
+		throw new RuntimeException("N har det skjedd noe feil");
 	}
 
 	public void remove(char c, int...is) {

@@ -8,10 +8,10 @@ import static java.math.BigInteger.*;
 
 public class Problem396BigInt {
 	/**
-	 * se hva som skjer på n = 8
+	 * se hva som skjer paa n = 8
 	 * 
-	 * virker som første tall ikke har en dritt og si, bare teller ned sakte men sikkert
-	 * og andre tall teller ned like hver gang første går til 0
+	 * virker som frste tall ikke har en dritt og si, bare teller ned sakte men sikkert
+	 * og andre tall teller ned like hver gang frste gr til 0
 	 */
 	public static void main(String[] args) {
 		long start = System.currentTimeMillis();

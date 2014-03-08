@@ -11,16 +11,16 @@ public class Problem375Observations {
 		 * S(n) for n=1,2,.. er periodisk med periode 6308948
 		 * Definerer S(0) = 25388651 gir hele S periodisk
 		 * 
-		 * SE P ABedre for mye mer effektiv A-funksjon for h¿ye tall
+		 * SE P ABedre for mye mer effektiv A-funksjon for hye tall
 		 * 
 		 * 
 		 * 
-		 * TODO: finne lokale bunnpunkter i S og utnytte dette litt pŒ samme mŒte som ABedre
+		 * TODO: finne lokale bunnpunkter i S og utnytte dette litt paa samme maate som ABedre
 		 * 
 		 * TODO: Se static-initializen. lage noe slags rangeobjekt 
 		 * 
 		 * 
-		 * lagre unna noen ranges -> s¿k etter S -> log(n % PERIOD) kj¿retid (ish) 
+		 * lagre unna noen ranges -> sk etter S -> log(n % PERIOD) kjretid (ish)
 		 */
 		
 		T t = new T();

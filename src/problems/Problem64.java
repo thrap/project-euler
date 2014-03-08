@@ -43,6 +43,6 @@ public class Problem64 {
 				}
 			}
 		}
-		return tellersum;// + " (høyeste repeat: " + hoy+")");
+		return tellersum;// + " (hyeste repeat: " + hoy+")");
 	}
 }

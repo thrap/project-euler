@@ -68,7 +68,7 @@ public class Problem221 {
 			if (count == 6) {
 				System.out.println(A);
 			} else if (count == 1000) {
-				System.out.println(A + " skal v¾re 772168278");
+				System.out.println(A + " skal vaere 772168278");
 			} else if (count == 150000) {
 				System.out.println(A);
 			}

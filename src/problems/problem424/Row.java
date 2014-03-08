@@ -173,7 +173,7 @@ public class Row {
 			return permutations;
 		}
 		
-		throw new RuntimeException("NŒŒŒ har du en jobb Œ gj¿re her mister:) Size = "+cells.size());
+		throw new RuntimeException("N har du en jobb  gjre her mister:) Size = "+cells.size());
 	}
 	
 	private void removeUnused(boolean[][] used) {

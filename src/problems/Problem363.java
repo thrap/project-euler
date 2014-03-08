@@ -11,7 +11,7 @@ public class Problem363 {
 	public static void main(String[] args) {
 		
 		/**
-		 * SE PÅ v DEN ER SPA OG FIN OG SÅNN
+		 * SE PAA v DEN ER SPA OG FIN OG SAANN
 		 */
 
 		T t = new T();

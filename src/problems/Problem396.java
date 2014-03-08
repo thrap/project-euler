@@ -5,10 +5,10 @@ import java.util.List;
 
 public class Problem396 {
 	/**
-	 * se hva som skjer på n = 8
+	 * se hva som skjer paa n = 8
 	 * 
-	 * virker som første tall ikke har en dritt og si, bare teller ned sakte men sikkert
-	 * og andre tall teller ned like hver gang første går til 0
+	 * virker som foerste tall ikke har en dritt og si, bare teller ned sakte men sikkert
+	 * og andre tall teller ned like hver gang foerste gaar til 0
 	 */
 	public static void main(String[] args) {
 		long start = System.currentTimeMillis();

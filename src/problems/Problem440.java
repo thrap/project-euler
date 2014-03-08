@@ -24,7 +24,7 @@ public class Problem440 {
 			for (int b = a+1; b <= L; b++) {
 				for (int c = 1; c <= L; c++) {
 					/**
-					 * hvis en av dem er delelig pŒ 2: gcd = 1
+					 * hvis en av dem er delelig p 2: gcd = 1
 					 */
 					long pow1 = (long)Math.pow(c, a);
 					BigInteger t1 = Tb(pow1);

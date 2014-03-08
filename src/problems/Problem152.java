@@ -15,7 +15,7 @@ public class Problem152 {
 //		System.out.println(r);
 		recursion(r, 2);
 		
-		//TODO lol dette er bare møkka. må finne smartere sjekk for too large og too small
+		//TODO lol dette er bare moekka. maa finne smartere sjekk for too large og too small
 	}
 	
 	static int i = 0;

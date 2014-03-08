@@ -12,7 +12,7 @@ public class Problem358Brute {
 		primes.remove(0);
 		
 		/**
-		 * teste primtall mellom 99999999999/138 og 99999999999/137 (eller kanskje 136 h¾h¾)
+		 * teste primtall mellom 99999999999/138 og 99999999999/137 (eller kanskje 136)
 		 */
 		
 		//(10^(p-1)-1)/p mod 10^10

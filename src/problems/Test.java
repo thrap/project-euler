@@ -435,7 +435,7 @@ public class Test {
 //			System.out.println(cLav);
 			if (sjekkForste(fibonacciNesteH0y())) {
 //				System.out.println(cH0y);
-				System.out.println("F�rste: "+i);
+				System.out.println("Frste: "+i);
 				a=true;
 //				break;
 			}

@@ -33,9 +33,9 @@ public class Problem152Bedre {
 	
 	/**
 	 * Tanke: har fellesnevner
-	 * MŒl: finne kombinasjoner av valg av tall som gir fellesnevner/2 som sum
+	 * Maal: finne kombinasjoner av valg av tall som gir fellesnevner/2 som sum
 	 * 
-	 * Utf¿relse: dritt h¾h¾
+	 * Utfoerelse: dritt
 	 */
 	public static void main(String[] args) {
 		reccursion(2, goal, "2");
@@ -43,7 +43,7 @@ public class Problem152Bedre {
 	static int count = 0;
 	
 	/**
-	 * FUCK FAENS BIGINTEGER H®H®H®H®
+	 * FUCK FAENS BIGINTEGER
 	 */
 	public static void reccursion(int i, BigInteger missing, String tall) {
 		if (missing.compareTo(BigInteger.ZERO) == 0) {
@@ -76,7 +76,7 @@ public class Problem152Bedre {
 		
 		BigInteger f = BigInteger.ONE;
 		for (Map.Entry<Integer, Integer> entry: fellesnevner.entrySet()) {
-			//overflow b¾sj
+			//overflow bsj
 			f = f.multiply(BigInteger.valueOf(entry.getKey()).pow(entry.getValue()));
 		}
 		System.out.println(f);

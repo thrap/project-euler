@@ -38,7 +38,7 @@ public class Problem359Observations {
 	
 	public static void main(String[] args) {
 		
-		//Kombinasjonen av disse l¿ser oppgaven ja?
+		//Kombinasjonen av disse loeser oppgaven ja?
 		
 		// P(2n+1, 1) = 2*n*(n+1)
 		// P(2n, 1) = 2*n*n

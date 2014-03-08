@@ -77,7 +77,7 @@ public class Sudoku {
 		for (int j = 0; j < tall.length; j++) {
 			for (int j2 = 0; j2 < tall.length; j2++) {
 				if (brett[j][j2] == 0 && tall[j][j2].size() == 0) {
-					System.out.println("fy faen så fuckings feil");
+					System.out.println("fy faen s fuckings feil");
 					System.exit(0);
 				}
 			}

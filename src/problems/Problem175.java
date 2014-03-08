@@ -10,8 +10,6 @@ public class Problem175 {
 		//f(2k) = f(k)+ f(k-1)
 		//f(2k+1) = f(k) 
 		
-		//brukte Calkin–Wilf tree. 
-		//målet er å finne ut hvilken node som inneholder n/d, starter i noden og jobber binært oppover for å finne binærstreng 
 		long start = System.currentTimeMillis();
 		System.out.println(SBE(13, 17));
 		System.out.println(SBE(123456789,987654321) + " ("+(System.currentTimeMillis()-start)+" ms)");
@@ -27,7 +25,6 @@ public class Problem175 {
 			if (n == d) {
 				sb.append(1);
 				
-				//dritten starter i løvnode, så må reversere
 				sb = sb.reverse();
 				break;
 			} else if (n < d) {

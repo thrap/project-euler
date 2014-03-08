@@ -10,19 +10,6 @@ public class Problem218 {
 	}
 
 	private static int getPerfectTriples() {
-		//alle right angled triangles 
-		//a^2 + b^2 = c^2
-		//a = m^2-n^2
-		//b = 2*m*n
-		//c = m^2 + n^2
-		
-		//c skal være perfect square altså:
-		//c = d^2 
-		//m^2 + n^2 = d^2
-		//dette er også pythagorean triple
-		//m = k^2-j^2
-		//n = 2*k*j
-		//d = k^2 + j^2
 		int perfect = 0;
 		int superPerfect = 0;
 		for (long k = 0; k < 100000; k++) {

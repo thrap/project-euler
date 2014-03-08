@@ -7,7 +7,6 @@ public class Problem160bestlol {
 	static int remove = 100000;
 	public static void main(String[] args) {
 		int limit = 100000000;
-		//tar 5-erene etterpå. men hmm how? loool fail as hæhæhææhæhæh dette ekke spe
 		System.out.println(algo1(limit));
 		System.out.println(algo2(limit));
 		System.out.println(algo3(limit));

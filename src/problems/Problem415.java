@@ -21,7 +21,7 @@ public class Problem415 {
 		System.out.println(T(2));
 	}
 
-	//2^(N^3) kj¿retid yeah buddi 
+	//2^(N^3) kjretid yeah buddi
 	private static int T(int N) {
 		List<Point> points = new ArrayList<Point>();
 		for (int x = 0; x <= N; x++) {
@@ -43,7 +43,7 @@ public class Problem415 {
 		return 0;
 	}
 
-	//denne funker ikke h¾h¾
+	//denne funker ikke hh
 	private static boolean isTitanicSet(List<Point> subset) {
 		if (subset.size() < 2)
 			return false;

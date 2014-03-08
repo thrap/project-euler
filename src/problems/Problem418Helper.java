@@ -15,7 +15,7 @@ public class Problem418Helper {
 //			System.out.println();
 //		}
 		System.out.println("Trenger: "+set.size());
-		System.out.println("FŒr:     "+count);
+		System.out.println("Fr:     "+count);
 	}
 	
 	static int[] pows = {4,2,1,1,1,1,1,1,1,2}; 

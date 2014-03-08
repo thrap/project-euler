@@ -52,7 +52,7 @@ public class Problem233Faster {
 				}
 			}
 		}
-		System.out.println("Ferdig f¿rste");
+		System.out.println("Ferdig foerste");
 		
 		A = ONE;
 		for (int i = 0; i < superPrimes.length && A.pow(10).compareTo(LIMIT) == -1; i++) {

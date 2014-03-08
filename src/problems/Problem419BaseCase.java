@@ -6,7 +6,7 @@ public class Problem419BaseCase {
 	
 	/**
 	 * 
-	 * Tror denne er verdt å se på lizm
+	 * Tror denne er verdt  se p lizm
 	 * 
 	 * http://www.njohnston.ca/2010/10/a-derivation-of-conways-degree-71-look-and-say-polynomial/
 	 * 
@@ -16,7 +16,7 @@ public class Problem419BaseCase {
 	 * subsequence (24) evolves into (83) and the subsequence (39) evolves into (9), so the ninth term in the look-and-say 
 	 * sequence is (83)(9), which is 31131211131221.
 	 *
-	 * 1113213211 er 7. element i denne oppgaven, ta det derfra lizm hæhæ 
+	 * 1113213211 er 7. element i denne oppgaven, ta det derfra lizm hh
 	 */
 	public static void main(String[] args) {
 		String element = "1";

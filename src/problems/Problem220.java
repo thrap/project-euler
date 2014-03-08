@@ -6,8 +6,8 @@ public class Problem220 {
 	
 	public static void main(String[] args) {
 		/**
-		 * fact1 = hver derive gjør størrelsen 2*x+2 større
-		 * 
+		 * fact1 = hver derive gjoer stoerrelsen 2*x+2 stoeâ€œrre
+		 *
 		 */
 		String d = "Fa";
 		for (int i = 1; i <= 50; i++) {

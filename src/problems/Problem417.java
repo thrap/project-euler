@@ -6,9 +6,9 @@ import java.util.List;
 
 public class Problem417 {
 	/**
-	 * denne har med cyclic numbers å gjøre
+	 * denne har med cyclic numbers  gjre
 	 * 
-	 * se også på primtallsfaktorisering av repunits
+	 * se ogs p primtallsfaktorisering av repunits
 	 */
 	public static void main(String[] args) {
 		long sum = 0;

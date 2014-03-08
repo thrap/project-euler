@@ -8,7 +8,7 @@ public class Problem303a {
 	public static void main(String[] args) {
 		BigInteger sum = BigInteger.ZERO;
 		for (int tal = 1; tal <= 10000; tal++) {
-			//lol mønster lizm gjetter 9999 hæhæhæhæ
+			//lol maanster lizm gjetter 9999
 			if (tal == 99) {
 				sum = sum.add(BigInteger.valueOf(11335578L));
 				continue;

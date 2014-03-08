@@ -28,16 +28,13 @@ public class Problem105 {
 			}
 			Arrays.sort(set);
 			list.add(set);
-//			System.out.println(Arrays.toString(set));
 		}
 		
 		int sum = 0;
 		
 		for (int[] is : list) {
 			if (rule1(is) && rule2(is)){
-//				System.out.println(Arrays.toString(is));
 				sum+=S(is);
-//				list.remove(is);
 			}
 		}
 		return sum;
@@ -123,7 +120,7 @@ public class Problem105 {
 		int B = set[0];
 		int C = 0;
 		
-		//set er allerede sortert, og algoritmen fungerer da den legger til minste i B og st¿rste i C. (ser at B > C)
+		//set er allerede sortert, og algoritmen fungerer da den legger til minste i B og storste i C. (ser at B > C)
 		for (int i = 1; i < set.length; i++) {
 			B+=set[i];
 			C+=set[set.length-i];

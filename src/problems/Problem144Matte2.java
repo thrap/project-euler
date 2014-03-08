@@ -128,7 +128,7 @@ public class Problem144Matte2 {
 		double angle;
 		if (Math.signum(startX) == Math.signum(endX)) {
 			if (startX < 0) {
-				//tror ikke denne er helt til Œ stole pŒ
+				//tror ikke denne er helt til aa stole paa
 				angle = Xaxis.theta(tangent)-beam.negate().theta(tangent);
 			} else {
 				angle = Math.PI+Xaxis.theta(tangent)-beam.negate().theta(tangent);

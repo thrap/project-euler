@@ -18,9 +18,9 @@ public class Problem413 {
 	private static int count(int index, long number, int last, int d, boolean used) {
 		if (index == d) {
 			System.out.println(number);
-			//TODO: legge må legge på en 0 om number.length < d
+			//TODO: legge m legge p en 0 om number.length < d
 			
-			//større TODO: regne ut permutasjoner av number
+			//strre TODO: regne ut permutasjoner av number
 
 			return 1;
 		}

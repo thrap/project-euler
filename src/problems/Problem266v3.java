@@ -28,7 +28,7 @@ public class Problem266v3 {
 	//TODO denne tar med 1 hele veien og det er jo grisegay som faen
 	//beste fra denne = 2323218950032606126782205593224856300
 	public static void recursion(int n, BigInteger product) {
-		//LOL MED 4 TALL TAR DENNE DRITLANG TID OGSÅ
+		//LOL MED 4 TALL TAR DENNE DRITLANG TID OGSAA
 		if (n == 4)
 			return;
 		if (product.compareTo(BEST) == 1) {

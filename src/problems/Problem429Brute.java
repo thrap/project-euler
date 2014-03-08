@@ -6,7 +6,7 @@ public class Problem429Brute {
 	public static void main(String[] args) {
 		long n = Euler.factorial(7).longValue();
 		/**
-		 * må ta alle permutasjoner av prime^pow
+		 * m ta alle permutasjoner av prime^pow
 		 */
 		long sum = 0;
 		for (int d = 1; d <= n; d++) {

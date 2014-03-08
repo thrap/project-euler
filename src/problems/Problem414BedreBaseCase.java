@@ -13,7 +13,7 @@ public class Problem414BedreBaseCase {
 			int base = 6*k+3;
 			long count = 0;
 			Cb = findCb(base, new int[] {0,0,0,0,1});
-			//om Cb er sortert går ting til helvette
+			//om Cb er sortert gr ting til helvette
 			for (int i = 1; i < 5; i++) {
 				if (Cb[i-1] > Cb[i])
 					break;
@@ -45,7 +45,7 @@ public class Problem414BedreBaseCase {
 				}
 			}
 			/**
-			 * NB OM CB ER DEN MAN TESTER PÅ GÅR DET TIL HELVETTE
+			 * NB OM CB ER DEN MAN TESTER P GR DET TIL HELVETTE
 			 * 
 			 * 
 			 * count bommer med 1 pga Cb

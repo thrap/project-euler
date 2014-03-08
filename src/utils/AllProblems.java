@@ -24,7 +24,7 @@ public class AllProblems {
 		
 		System.out.println(solved);
 		System.out.println(unsolved);
-		System.out.println((System.currentTimeMillis()-starten)+"ms totalt på "+solved.size()+" oppgaver");
+		System.out.println((System.currentTimeMillis()-starten)+"ms totalt paa "+solved.size()+" oppgaver");
 		long start = System.currentTimeMillis();
 		
 		Set<Problem> fastest = new TreeSet<Problem>(Problem.REVERED);

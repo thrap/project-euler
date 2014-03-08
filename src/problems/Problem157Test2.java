@@ -9,7 +9,7 @@ import utils.Euler;
 public class Problem157Test2 {
 	public static void main(String[] args) {
 		/**
-		 * TODO: finne smarte grenser så har du den jeg sverger kompis
+		 * TODO: finne smarte grenser saa har du den jeg sverger kompis
 		 */
 		
 		//p = 2^n*5^n(a+b)/(b*a)

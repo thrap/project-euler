@@ -20,8 +20,8 @@ public class Problem413BedreBaseCase {
 	}
 	
 	/**
-	 * finner f¿rst tall som inneholder enten 0 eller d eller ingen av delene
-	 * - sjekker pŒ slutten (tregt)
+	 * finner frst tall som inneholder enten 0 eller d eller ingen av delene
+	 * - sjekker p slutten (tregt)
 	 */
 	private static int count(int index, int d, int number, boolean used) {
 		if (index == d)

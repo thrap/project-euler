@@ -25,7 +25,7 @@ public class Problem313BaseCase {
 			n = m;
 			m = temp;
 		}
-		int moves = (m-1)+(n-1); // r¿d = (1,0) hvit = (0,0)
+		int moves = (m-1)+(n-1); // roed = (1,0) hvit = (0,0)
 		if (m == n)
 			return moves + 3 + 6*(n-2);
 		if (m == n+1)

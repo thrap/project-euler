@@ -66,9 +66,6 @@ public class Problem212BaseCase {
 			sum += C.area();
 			for (Cuboid cuboid : cuboids) {
 				if (cuboid.intersects(C)) {
-					/**
-					 * her er det feil, må generere cuboids som ikke intersecter
-					 */
 					Cuboid intersection = C.getIntersection(cuboid);
 					System.out.println(intersection);
 					System.out.println(C);

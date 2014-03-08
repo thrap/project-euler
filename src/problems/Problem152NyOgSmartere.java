@@ -26,7 +26,7 @@ public class Problem152NyOgSmartere {
 	public static void main(String[] args) {
 		
 		/** 
-		 * TODO : lagre info om feks index 20-35 f¿rst
+		 * TODO : lagre info om feks index 20-35 foerst
 		 */
 		System.out.println(smallSums.size());
 		// TODO: sjekke om smallsums inneholder dessa
@@ -35,7 +35,7 @@ public class Problem152NyOgSmartere {
 		/**
 		 * dette er det som betyr noe, ignorer alle hjelpemetoder under
 		 */
-		System.out.println("Hvilken kombinasjon av f¿lgende tall");
+		System.out.println("Hvilken kombinasjon av flgende tall");
 		System.out.println(Arrays.toString(numbers));
 		System.out.println("gir sum lik \n"+goal);
 		

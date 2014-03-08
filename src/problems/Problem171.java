@@ -39,7 +39,7 @@ public class Problem171 {
 		System.out.println("Antall tall: "+numbers.size() + " " +(System.currentTimeMillis()-start)+"ms");
 		//221372
 		
-		//TODO nå er permutasjonstallene funnet. Legg sammen permutasjoner og vinn hæhæ
+		//TODO naa er permutasjonstallene funnet. Legg sammen permutasjoner og vinn
 	}
 	
 	public static void divideSquare(int square, int forrige, String number) {

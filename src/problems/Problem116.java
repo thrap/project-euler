@@ -99,7 +99,7 @@ public class Problem116 {
 	
 	x x x xx xx xx
 	
-//	System.out.println(sum(9,2));//skal være1+3+6+10
+//	System.out.println(sum(9,2));//skal vaere1+3+6+10
 //	System.out.println(antall(7,2,2));
 //	antall(6,2,2)
 //	antall(5,2,2)

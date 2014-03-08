@@ -23,8 +23,6 @@ public class Problem131 {
 	public static boolean isCube(long sum, long n) {
 		long x;
 		for (x = n+1; x*x*x < sum; ++x);
-//		if (x*x*x == sum)
-//			System.out.print(x + " ");
 		return x*x*x == sum;
 	}
 	
@@ -35,74 +33,27 @@ public class Problem131 {
 
 //		fact1: p^2 er en faktor
 //		fact2: n+p = x^(3*y)
-//		fact3: n+p må kunne deles på x^3
+//		fact3: n+p m kunne deles paa x^3
 //		fact4: n = z^3
 //		fact5: z^3 + p = x^3
 
 		int limit = 1000000;
 		List<Integer> list = Euler.primeList(limit);
-//		Set<Long> set = new HashSet<Long>();
-//		for (long i = 1; i <= limit*100; i++) {
-//			set.add(i*i*i);
-//		}
-//		System.out.println(set);
 		int teller = 0;
 		for (int i = 0; i < list.size(); ++i) {
 			int p = list.get(i);
-//			boolean funnet = false;
 			for (int n = 1; true; ++n) {
-//				BigInteger N = BigInteger.valueOf(n);
-//				N = N.pow(3);
-//				BigInteger SUM = N.add(BigInteger.valueOf(p));
-				
 				long sum = n*n*n + p;
 				
 				if (isDone(sum,n))
 					break;
-//				if (isDone(SUM,BigInteger.valueOf(n)))
-//					break;
-				
-//				if (isCube(SUM,BigInteger.valueOf(n))) {
 				if (isCube(sum,n)) {
-//					System.out.println(p);
 					++teller;
 					break;
 				}
-//				for (int x = 2; x*x*x <= sum; x++) {
-//					if (x*x*x == sum) {
-//						
-//						System.out.println(p);
-//						++teller;
-//					}
-//				}
-//				for (long x = 2; x*x*x <= sum; x++) {
-//					if (sum%(x*x*x)==0 || sum-(x*x*x) == 0) {
-//						System.out.println(n+"+"+p+ " / " + x*x*x + " = " + sum/(x*x*x));
-//						++teller;
-//						funnet = true;
-//					}
-//				}
-//				
-//				if (funnet)
-//					break;
-//				if (n+p ikke er delelig på noe^3)
-//					continue;
-//				if (noe^3 > n+p)
-//					break;
-//				
-//				if (sum<0) {
-////					System.out.println(sum);
-//					break;
-//				}
-//				if (set.contains(sum)) {
-//					System.out.println(n + "^3 + "+p+"*"+ n+"^2" + " = " + sum);
-//					++teller;
-//				}
 			}
-//			break;
 		}
 		
-//		System.out.println(teller);
 		return teller;
 	}
 }

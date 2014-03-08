@@ -17,10 +17,8 @@ public class Problem239 {
 			under = under.multiply(BigInteger.valueOf(97-i));
 		}
 		System.out.println(over + " "+under);
-		//ganger med 25 velg 3 men funker ikke h¾h¾h¾h¾h¾ fack
-		//fordi de etter er avhengige om de f¿r har tatt plassen eller ikke hmmmm
+		//fordi de etter er avhengige om de fr har tatt plassen eller ikke hmmmm
 		
-		//dette er faktisk stress h¾h¾
 		System.out.println(new BigDecimal(over).divide(new BigDecimal(under), 200, RoundingMode.HALF_UP).multiply(BigDecimal.valueOf(2300)));
 	}
 	

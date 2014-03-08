@@ -16,7 +16,7 @@ public class Problem407 {
 			System.out.print(n+" "+Euler.primeFactorList(n)+": ");
 			for (int a = 2; a < n; a++) {
 				/**
-				 * n må dele a*(a-1) og (n-a+1)*(n-a)
+				 * n m dele a*(a-1) og (n-a+1)*(n-a)
 				 * a*(a-1) = 0 mod n
 				 * (n-a+1)*(n-a) = 0 mod n
 				 */
@@ -26,7 +26,7 @@ public class Problem407 {
 						System.exit(0);
 					}
 					System.out.print(a+" " + Euler.primeFactorList(a) + " ");
-					//dette er ikke tilfeldig vett hæhæ
+					//dette er ikke tilfeldig vett hh
 					System.out.print(n-a+1 + " ");
 //					System.out.println(n%a == 0);
 					
@@ -37,7 +37,7 @@ public class Problem407 {
 		
 		Map<Integer, Integer> forrige = Euler.primeFactorMap(limit);
 		for (int a = limit; a >= 1; a--) {
-			//må sjekke alle divisorer til a*(a-1)
+			//m sjekke alle divisorer til a*(a-1)
 			Map<Integer, Integer> denne = Euler.primeFactorMap(a-1);
 //			System.out.println(forrige + " " + denne);
 			for (Map.Entry<Integer,Integer> factor : denne.entrySet()) {

@@ -31,10 +31,10 @@ public class Problem129 {
 	
 	
 	public static void main(String[] args) throws Exception {
-		//om n er delelig på a er R(n) delelig på R(a) 
+		//om n er delelig p a er R(n) delelig p R(a)
 		System.out.println(solution());
 		/**
-		 * FACT: R(k) er delelig på k-1 om gcd(k,10)==1
+		 * FACT: R(k) er delelig paa k-1 om gcd(k,10)==1
 		 * 
 		 * ER k PRIME GIR A(k) max i-1
 		 * 
@@ -43,7 +43,7 @@ public class Problem129 {
 		 * 
 		 * fact2: p can only divide Rn for prime n if p = 2kn + 1 for some k.
 		 * 
-		 * 61 går, 67 går ikke, 69 går, 71 går ikke
+		 * 61 gaar, 67 gaar ikke, 69 gaar, 71 gaar ikke
 		 * 
 		 * om det finnes et tall under i-1 som gir 
 		 */

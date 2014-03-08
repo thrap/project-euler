@@ -10,7 +10,7 @@ import utils.T;
 
 public class Problem390BaseCase {
 	public static void main(String[] args) {
-		//(c*c+b*b+c*c*b*b)/4 må være perfect square
+		//(c*c+b*b+c*c*b*b)/4 maa vaere perfect square
 		T t = new T();
 		long limit = (long) Math.pow(10, 6);
 		long areaLimit = 4*limit*limit;

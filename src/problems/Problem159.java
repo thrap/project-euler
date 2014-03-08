@@ -40,7 +40,6 @@ public class Problem159 {
 	}
 
 	public static long solution() {
-		//TA HVER FAKTOR FOR SEG OG BRUK DIVISORS HÆHÆHÆ LAGRE BESTE FOR HVERT TALL SÅ GÅR DET FORT
 		int sum = 0;
 		for (int i = 2; i < 1000000; i++) {
 			mdrs[i] = mdrs(i);

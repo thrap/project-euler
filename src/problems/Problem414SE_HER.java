@@ -24,7 +24,7 @@ public class Problem414SE_HER {
 		for (int i = 0; i < 5; i++) {
 			pow[i] = (long) Math.pow(base, i);
 		}
-		//om Cb er sortert gŒr ting til helvette
+		//om Cb er sortert gr ting til helvette
 		for (int i = 1; i < 5; i++) {
 			if (Cb[i-1] > Cb[i])
 				break;
@@ -67,7 +67,7 @@ public class Problem414SE_HER {
 				System.exit(0);
 			}
 			if (decoded[0]+decoded[4] != base-1 && decoded[0]+decoded[4] != base) {
-				System.out.println("Det stemmer ikke at f¿rste og siste blir summert til base eller base-1");
+				System.out.println("Det stemmer ikke at frste og siste blir summert til base eller base-1");
 				System.exit(0);
 			}
 			if (decoded[1]+decoded[3] != base-2 && decoded[1]+decoded[3] != 2*base-2) {

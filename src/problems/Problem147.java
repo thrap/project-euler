@@ -52,7 +52,7 @@ public class Problem147 {
 			else
 				return y-1>=w || (y>=w && x-1>=w);
 		} else {
-			//h�yde p� st�rste kvadrat = y
+			//hyde p strste kvadrat = y
 			long i = y-w;
 			if (y==x) 
 				return h<=y+i -(h%2==0?0:1);
@@ -100,7 +100,7 @@ public class Problem147 {
 				/**
 				 * 
 				 * tips kanskje til TODO's:
-					//h�yde p� st�rste kvadrat = y
+					//hyde p strste kvadrat = y
 					long i = y-w;
 					if (y==x) 
 						return h<=y+i -(h%2==0?0:1);
@@ -110,16 +110,16 @@ public class Problem147 {
 			}
 		} else {
 			//TODO HER
-			//y == h�yde p� st�rste kvadrat
+			//y == hyde p strste kvadrat
 //			(x-y)+1 = antall kvadrater
 //			antall kvadrater - 1 = antall mindre kvadrater
 			
-			//TODO dette er feil fordi det str�ste kvadratet er bare bullshit h�h�
+			//TODO dette er feil fordi det strste kvadratet er bare bullshit hh
 //			storste kvadrat w*h passer i er w*w
 			long kvadrater = ((x-w)+1)*(y-w+1);
 			long sum = kvadrater*rect(w, h, w, w);
 			
-			//TODO kutter av i 4 hj�rner som har w-1 kvadrater
+			//TODO kutter av i 4 hjrner som har w-1 kvadrater
 			sum += 2*rect(w, h, w, w-1);
 			if (sum >= 0)
 				return sum;
@@ -136,8 +136,8 @@ public class Problem147 {
 				sum+=sum(i,j);
 			}
 		}
-		System.out.println(sum(3,2) + " skal v�re 37");
-		System.out.println(sum(5,7) + " skal v�re 1120");
+		System.out.println(sum(3,2) + " skal vre 37");
+		System.out.println(sum(5,7) + " skal vre 1120");
 		System.out.println(sum + " er summen");
 //		System.out.println(normalSum(3,2) + " er summen ikke-snudde i 3x2");
 //		System.out.println(tiltedSum(3,2) + " er summen snudde i 3x2");

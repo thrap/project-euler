@@ -9,15 +9,9 @@ import utils.Euler;
 
 
 public class Problem193 {
-	static long limit = (long)Math.pow(2, 50);//(long)Math.pow(2, 9.8153); //på pow 4 har denne 1 mindre, på pow 10 har denne 1 mer wtf
+	static long limit = (long)Math.pow(2, 50);
 	public static void main(String[] args) {
-//		for (int i = 1; i <= limit+1; i++) {
-//			if (rask(i) != treg(i)) {
-//				System.out.println(i);
-//			}
-//		}
 		System.out.println("rask  : "+solution());
-		//for alle primtall p, sjekk p*p*(andre primtall) og pow(p,2..x)
 	}
 	
 	
@@ -93,9 +87,6 @@ public class Problem193 {
 			if (square*square < limit)
 				squares.add(new Square(square));
 			squares.addAll(products);
-//			if (++i%100 == 0) {
-//				System.out.println(square + " ("+squares.size()+")");
-//			}
 		}
 		return antall;
 	}
@@ -123,9 +114,6 @@ public class Problem193 {
 			if (square*square < limit)
 				squares.add(square);
 			squares.addAll(products);
-//			if (++i%100 == 0) {
-//				System.out.println(square + " ("+squares.size()+")");
-//			}
 		}
 		return antall;
 	}

@@ -21,12 +21,6 @@ public class Problem172 {
 		return sum;
 	}
 
-	/**
-	 * FEIL HER LOL FAIL AS SOM ØDELEGGER ALT ANNET TROR ANDRE FUNKER BRA HÆHÆ
-	 * 
-	 * 
-	 * HAHAHHA DU GLEMTE Å TA <= OG IKKE < HÆHÆHÆ SÅ FUNKET DET FY FAEN SPA AS NIGGUUUH
-	 */
 	public static long fac(int tiles, int[] count) {
 		BigInteger sum = BigInteger.valueOf(1);
 		for (int i = 1; i <= tiles; ++i) {

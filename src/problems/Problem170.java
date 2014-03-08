@@ -69,7 +69,7 @@ public class Problem170 {
 	
 	private static long number(int[] digits, int start, int end) {
 		if (digits[start] == 0 || start > end)
-			throw new RuntimeException("NŒ har du gjort noe feil mister " + start + " " + end);
+			throw new RuntimeException("Naa har du gjort noe feil mister " + start + " " + end);
 		long num = 0;
 		for (int i = start; i <= end; i++) {
 			num = num*10+digits[i];

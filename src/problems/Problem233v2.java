@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class Problem233v2 {
 	public static void main(String[] args) {
 		/**
-		 * er en sirkel på formen (x-N/2)^2+(y-N/2)^2 = N^2/2
+		 * er en sirkel paa formen (x-N/2)^2+(y-N/2)^2 = N^2/2
 		 * 
 		 * x^2+y^2 = N(x+y)
 		 * 

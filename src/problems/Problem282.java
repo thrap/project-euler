@@ -11,9 +11,9 @@ public class Problem282 {
 	public static final int MOD = (int)Math.pow(14, 8);
 	public static void main(String[] args) throws IOException {
 		/**
-		 * nŒr n > 24 blir alltid(?) hyper(a, n, MOD) lik 407921152
+		 * naar n > 24 blir alltid(?) hyper(a, n, MOD) lik 407921152
 		 * 
-		 * er ganske sikker pŒ at hyper-dritten min er feil lizm
+		 * er ganske sikker paa at hyper-dritten min er feil lizm
 		 */
 		
 		T t = new T();

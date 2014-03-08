@@ -44,9 +44,9 @@ public class Problem418BaseCase2 {
 	static int[] pows3 = new int[pows.length];
 
 	/**
-	 * dette går ikke ugg ugg
+	 * dette gr ikke ugg ugg
 	 * 
-	 * får det samme tallet 6 ganger, må finne noe smart for å unngå dette
+	 * fr det samme tallet 6 ganger, m finne noe smart for  unng dette
 	 * 
 	 */
 	private static void nestedFor(int i) {

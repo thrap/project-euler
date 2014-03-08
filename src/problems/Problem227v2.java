@@ -9,9 +9,9 @@ public class Problem227v2 {
 		// -2 begge right = 1/36
 		
 		//1/2: terningene blir der de er
-		//2/9: terningene gŒr 1 fra hverandre
-		//2/9: terningene gŒr 1 mot hverandre
-		//1/36: terningene gŒr 2 fra hverandre
-		//1/36: terningene gŒr 2 mot hverandre
+		//2/9: terningene gr 1 fra hverandre
+		//2/9: terningene gr 1 mot hverandre
+		//1/36: terningene gr 2 fra hverandre
+		//1/36: terningene gr 2 mot hverandre
 	}
 }

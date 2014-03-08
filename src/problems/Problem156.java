@@ -22,7 +22,7 @@ public class Problem156 {
 		
 		public boolean isValid() {
 			/**
-			 * er ikke helt confident på denna
+			 * er ikke helt confident paa denna
 			 */
 			long min = minF(low);
 			long max = maxF(high);

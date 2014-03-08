@@ -14,7 +14,7 @@ public class Problem414v2 {
 			
 			/**
 			 * det skal finnes 
-			 * midten kan v¾re hva som helst (bare den er imellom b og d) 
+			 * midten kan vre hva som helst (bare den er imellom b og d)
 			 * har du [a,b, ,d,e] => du har [a,b+1, ,d+1,e]
 			 * har du [a,b, ,d,e] => du har [a+1,b, ,d,e+1]
 			 */

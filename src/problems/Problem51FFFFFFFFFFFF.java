@@ -14,7 +14,7 @@ public class Problem51FFFFFFFFFFFF {
 		}
 		
 		for (int i = 0; i < count.length; i++) {
-			//er det bare én kan det replaces
+			//er det bare n kan det replaces
 			if (count[i] >= 1) {
 				String ny = tall.replace((char)('0'+i), '*');
 				Integer antall = map.get(ny);

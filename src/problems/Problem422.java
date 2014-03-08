@@ -5,7 +5,7 @@ public class Problem422 {
 		/**
 		 * http://www.wolframalpha.com/input/?i=%7B%7B12%2C7%2F2%7D%2C%7B7%2F2%2C-12%7D%7D
 		 * 
-		 * se pŒ egenverdier/egenvektorer her lizm. kan ikke v¾re tilfeldig at det er (7,1)?
+		 * se p egenverdier/egenvektorer her lizm. kan ikke vre tilfeldig at det er (7,1)?
 		 */
 	}
 }

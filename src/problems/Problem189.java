@@ -30,9 +30,9 @@ public class Problem189 {
 		public Tree(Tree over, DownTree middle, Tree left, Tree right) {
 			this(over.size*2, true);
 			if (over.size != left.size || over.size != right.size || left.size != right.size)
-				throw new RuntimeException("Sizes må være like");
+				throw new RuntimeException("Sizes maa vaere like");
 			if (!middle.fitsUnder(over) || !middle.fitsLeftOf(right) || !middle.fitsRightOf(left))
-				throw new RuntimeException("Nå har du vært dum her kompis");
+				throw new RuntimeException("Naa har du vaert dum her kompis");
 			
 			for (int i = 0; i < over.size; i++) {
 				this.under[i] = left.under[i];
@@ -65,7 +65,7 @@ public class Problem189 {
 						"  "+this.left[1] + " " + this.right[1] + "\n" +
 						" "+this.left[2] + "   " + this.right[2] + "\n" + 
 						this.under[0] + " " + this.under[1] + " " + this.under[2] + " " +this.under[3] + " ";
-			throw new RuntimeException("De skal enten være 2 eller 4 din dass");
+			throw new RuntimeException("De skal enten vaere 2 eller 4 din dass");
 		}
 	}
 	

@@ -80,12 +80,12 @@ public class Problem182Faster {
 	}
 
 	private static void reccurse(int n, BigInteger N, Set<Integer> unconcealable, List<BigInteger> candidates) {
-		System.out.println("Ny st¿rrlese: " + candidates.size());
+		System.out.println("Ny strrlese: " + candidates.size());
 		BigInteger sum = BigInteger.ZERO;
 		for (BigInteger bigInteger : candidates) {
 			sum = sum.add(bigInteger);
 		}
-		System.out.println("Forel¿pig sum: " + sum);
+		System.out.println("Foreloepig sum: " + sum);
 		
 		//han her er en drittsekk 6071
 		List<BigInteger> skalSjekke = new ArrayList<BigInteger>();

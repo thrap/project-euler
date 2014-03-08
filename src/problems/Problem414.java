@@ -19,7 +19,7 @@ public class Problem414 {
 			
 			/**
 			 * det skal finnes 
-			 * midten kan være hva som helst (bare den er imellom b og d) 
+			 * midten kan vre hva som helst (bare den er imellom b og d)
 			 * har du [a,b, ,d,e] => du har [a,b+1, ,d+1,e]
 			 * har du [a,b, ,d,e] => du har [a+1,b, ,d,e+1]
 			 */
@@ -78,7 +78,7 @@ public class Problem414 {
 		}
 		
 		/**
-		 * fact: midten er alltid med, lenge den er mindre enn index 3 og større enn index 1 
+		 * fact: midten er alltid med, lenge den er mindre enn index 3 og strre enn index 1
 		 */
 		Map<Long, List<String>> equal = new TreeMap<Long, List<String>>(); 
 		for (long value : values) {
@@ -96,11 +96,11 @@ public class Problem414 {
 		int x = base;
 		Set<Long> set = new TreeSet<Long>();
 		/**
-		 * tallene er på formen ..,a,b] 
+		 * tallene er p formen ..,a,b]
 		 */
 		
 		
-		//de første (base) sifferene
+		//de frste (base) sifferene
 		System.out.print("InterpolatingPolynomial {");
 		for (long i = 2; true; i++) {
 			long number = ((2*base-i)*(i-1))/2;
@@ -308,7 +308,7 @@ public class Problem414 {
 	}
 
 	/**
-	 * må kanskje gjøre om til bigInteger etterhvert
+	 * m kanskje gjre om til bigInteger etterhvert
 	 */
 	public static List<Long> generatePossibleNumbers(int base) {
 		for (int i = 0; i < 5; i++) {

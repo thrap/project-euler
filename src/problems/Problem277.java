@@ -6,8 +6,8 @@ public class Problem277 {
 	}
 	
 	public static long solution() {
-//		tall - 1 er delelig på 3
-//		4*tall+2 er delelig på 81
+//		tall - 1 er delelig paa 3
+//		4*tall+2 er delelig paa 81
 		for (long i = 1000013819853784L; true; i+=94143178827L) {
 			if (a(i).contains("UDDDUdddDDUDDddDdDddDDUDDdUUDd")) {
 //				System.out.println(a(i));

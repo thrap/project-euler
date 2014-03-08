@@ -63,7 +63,7 @@ public class Problem375Hypotese {
 		long sum = 0;
 		
 		/**
-		 *  kan kanskje kutte ned den doble forløkka på noe vis?
+		 *  kan kanskje kutte ned den doble forlOEkka paa noe vis?
 		 */
 		for (int j = 1; j <= N; j++) {
 			if (j % 100 == 0)

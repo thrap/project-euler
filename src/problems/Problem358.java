@@ -14,9 +14,9 @@ public class Problem358 {
 		for (long prime : primeListBetween) {
 			count++;
 			/**
-			 * må finne ut en måte å finne siste digits på
+			 * maa finne ut en maate aa finne siste digits paa
 			 * 
-			 * kan kanskje gange med x -> prime og se om de første tallene er lik 567890..0137..
+			 * kan kanskje gange med x -> prime og se om de frste tallene er lik 567890..0137..
 			 */
 			if (isCyclic(prime)) {
 				System.out.println(prime + " " + count+"/"+primeListBetween.size() + " "+t);
@@ -42,7 +42,7 @@ public class Problem358 {
 			System.out.println(lastDigits);
 			if (lastDigits == 56789) {
 				/**
-				 * dette er målet
+				 * dette er maalet
 				 */
 				System.out.println(p + "!!!!!!!!!!!!!!!!!!!!!!!!");
 				System.exit(0);

@@ -7,7 +7,7 @@ public class Problem255BaseCase {
 	static long digits = 5;
 	public static void main(String[] args) {
 		/**
-		 * må se på sammenheng mellom iterasjon og tall
+		 * maa se paa sammenheng mellom iterasjon og tall
 		 */
 		T t = new T();
 		long count = 0;

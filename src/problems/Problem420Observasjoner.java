@@ -44,13 +44,13 @@ public class Problem420Observasjoner {
 							
 							/**
 							 * 
-							 * SE PÅ DETTE DET ER VIKTIG OG SMART OG ESSENSIELT
+							 * SE P DETTE DET ER VIKTIG OG SMART OG ESSENSIELT
 							 * 
 							 */
 							
 							if (matrices.get(s) > 1) {
 								validate("Determinant er aldri lik 0", a*d-c*b != 0);
-								validate("Det inni squareroot på egenverdier er alltid perfect square", Euler.isPerfectSquare(a*a-2*a*d+4*b*c+d*d));
+								validate("Det inni squareroot p egenverdier er alltid perfect square", Euler.isPerfectSquare(a*a-2*a*d+4*b*c+d*d));
 
 								long e1 = (-(a+d)*(long)Math.sqrt(a*a-2*a*d+4*b*c+d*d)+a*a+2*b*c+d*d)/2;
 								long e2 = ((a+d)*(long)Math.sqrt(a*a-2*a*d+4*b*c+d*d)+a*a+2*b*c+d*d)/2;

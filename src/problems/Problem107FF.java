@@ -84,7 +84,7 @@ public class Problem107FF {
 //		System.out.println(sum);
 	}
 
-	// Prim-Jarník's algorithm to find MST rooted at s
+	// Prim-Jarnk's algorithm to find MST rooted at s
 	public static int[] prim(WeightedGraph G, int s) {
 		final int[] dist = new int[G.size()]; // shortest known distance to
 												// MST
