@@ -70,7 +70,7 @@ public class AllProblems {
 		private void solve() {
 			long start = System.currentTimeMillis();
 			try {
-				Class<?> clazz = Class.forName("problems.Problem"+number);
+				Class<?> clazz = Class.forName("Java.Problem"+number);
 				Method m = clazz.getMethod("solution");
 				solution = m.invoke(null);
 				time = System.currentTimeMillis()-start;
