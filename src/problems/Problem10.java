@@ -11,12 +11,9 @@ public class Problem10 {
 	}
 	
 	public static long solution() {
-		boolean[] prime = Euler.primeArray(2000000);
-		long sum = 2;
-		for (int i = 3; i < prime.length; i+=2) {
-			if (prime[i])
-				sum+=i;
-		}
+		long sum = 0;
+        for(int p : Euler.primeList(2000000))
+            sum += p;
 		return sum;
 	}
 }
