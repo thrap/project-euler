@@ -20,16 +20,12 @@ import problems.problem424.White;
 import utils.T;
 
 public class Problem424 {
-	/**
-	 * TODO: les denne
-	 * http://krazydad.com/krypto/help.php
-	 */
 	
 	static PossibleValues pv;
 	
 	public static void main(String[] args) throws IOException {
 		T t = new T();
-		BufferedReader br = new BufferedReader(new FileReader("/Users/thrap/Dropbox/Java/euler/input-files/kakuro200.txt"));
+		BufferedReader br = new BufferedReader(new FileReader("src/input-files/kakuro200.txt"));
 		String input;
 		
 		int count = 0;
