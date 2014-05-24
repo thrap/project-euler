@@ -41,6 +41,8 @@ public class Rational extends Number {
 	
 	public void simplify() {
 		long t = gcd();
+        if (t == 0)
+            return;
 	    n /= t;
 	    d /= t;
 	
