@@ -3,8 +3,8 @@ package utils;
 import java.math.BigInteger;
 
 public class BigRational implements Comparable<BigRational>  {
-	BigInteger n;
-	BigInteger d;
+	public BigInteger n;
+	public BigInteger d;
 	
 	public BigRational(BigInteger n, BigInteger d) {
 		this.n = n;
@@ -23,12 +23,29 @@ public class BigRational implements Comparable<BigRational>  {
 	public BigRational add(BigRational rational2) {
         BigInteger newNumerator = this.n.multiply(rational2.d).add(this.d.multiply(rational2.n));
         BigInteger newDenominator = this.d.multiply(rational2.d);
-        BigRational newRational = new BigRational(newNumerator, newDenominator);
-        return newRational;
+        return new BigRational(newNumerator, newDenominator);
 	}
-	
-	public void simplify() {
+
+    public BigRational subtract(BigRational rational2) {
+        BigInteger newNumerator = this.n.multiply(rational2.d).subtract(this.d.multiply(rational2.n));
+        BigInteger newDenominator = this.d.multiply(rational2.d);
+        return new BigRational(newNumerator, newDenominator);
+    }
+
+    public BigRational multiply(BigRational rational2) {
+        return new BigRational(n.multiply(rational2.n), d.multiply(rational2.d));
+    }
+
+    public BigRational divide(BigRational r2) {
+        return multiply(new BigRational(r2.d, r2.n));
+    }
+
+
+    public void simplify() {
 		BigInteger t = gcd();
+        if (t.equals(BigInteger.ZERO)) {
+            return;
+        }
 	    n = n.divide(t);
 	    d = d.divide(t);
 	
