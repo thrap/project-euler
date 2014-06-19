@@ -1,60 +1,21 @@
 package Java;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import utils.BigRational;
-
 public class Problem152 {
 	public static void main(String[] args) {
-		BigRational r = new BigRational();
-//		for (int i = 2; i <= 80; i++) {
-//			r = r.add(new BigRational(1, i*i));
-//			System.out.println(r);
-//		}
-//		System.out.println(r);
-		recursion(r, 2);
-		
-		//TODO lol dette er bare moekka. maa finne smartere sjekk for too large og too small
-	}
-	
-	static int i = 0;
-	public static void recursion(BigRational r, int n) {
-		if (n == numbers) {
-			if (r.equals(goal))
-				System.out.println(r);
-			if (++i%10000 == 0)
-				System.out.println(i + " " + r);
-			return;
-		} 
-		if (!tooLarge(r)) {
-			recursion(r.add(new BigRational(1, n*n)), n+1);
-		}
-		if (!tooSmall(r, n)) {
-			recursion(r, n+1);
-		}
-	}
-	
-	static int numbers = 35;
-	
-	static Map<Integer, BigRational> MAX = new HashMap<Integer, BigRational>();
-	
-	static {
-		BigRational r = new BigRational();
-		for (int i = numbers; i >= 2; i--) {
-			r = r.add(new BigRational(1, i*i));
-			MAX.put(i+1, r);
-//			System.out.println(r);
-		}
-	}
-	
-	private static boolean tooSmall(BigRational r, int n) {
-		return r.add(MAX.get(n+1)).compareTo(goal) == -1;
-	}
+        for (int i = 2; i <= 40; i++) {
+            System.out.println(i + ": "+period(i));
+        }
+        int period = period(7);
+        System.out.println(period);
+    }
 
-	static BigRational goal = new BigRational(1,2);
-	
-	private static boolean tooLarge(BigRational r) {
-		return r.compareTo(goal) == 1;
-	}
+    private static int period(long n) {
+        while (n % 2 == 0) n /= 2;
+        while (n % 5 == 0) n /= 5;
+        if (n == 1) return 0;
+
+        int p = 1;
+        for (long k = 10; k % n != 1; p++, k = (k*10) % n);
+        return p;
+    }
 }
