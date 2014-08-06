@@ -34,4 +34,6 @@ class Rational(numerator: BigInt, denominator: BigInt) {
 
   override def equals(obj:Any) =
     obj.isInstanceOf[Rational] && obj.asInstanceOf[Rational] == this
+
+  override def hashCode = (n*d).hashCode()
 }
