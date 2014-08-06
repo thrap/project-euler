@@ -31,4 +31,7 @@ class Rational(numerator: BigInt, denominator: BigInt) {
   override def toString: String = {
     if (d == BigInt(1)) "" + n else "" + n + "/" + d
   }
+
+  override def equals(obj:Any) =
+    obj.isInstanceOf[Rational] && obj.asInstanceOf[Rational] == this
 }
