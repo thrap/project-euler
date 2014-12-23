@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="../libs/angular.min.js"></script>
+    <script type="text/javascript" src="gridctrl.js"></script>
+    <style>
+        .cell{
+            margin: 0; padding:0; border: 0; display: inline-block;
+            width: 10px; height: 10px;
+        }
+        .alive {
+            background-color: black;
+        }
+        .row{
+            line-height: 0;
+        }
+    </style>
+</head>
+<body ng-app>
+<div ng-controller="GridCtrl">
+    <div class="row" ng-repeat="row in black track by $index">
+        <div class="cell" ng-repeat="cell in row track by $index" ng-class="{alive: cell==true}"></div>
+    </div>
+    <span>{{steps}}</span>
+</div>
+
+</body>
+</html>
