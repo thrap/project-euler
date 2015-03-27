@@ -4,12 +4,10 @@ import utils.Euler
 import scala.collection.JavaConversions._
 
 object Problem77 extends App {
-  val nums = Array.fill(1000){0L}
-  val coins = Euler.primeList(1000).toList.map(_.toInt)
-  for (coin <- coins) {
-    nums(coin) += 1
-    for (i <- coin until nums.length)
-      nums(i) += nums(i-coin)
-  }
-  println(nums.zipWithIndex.find(_._1 > 5000).get._2)
+  val p = Array.fill(1000){0}
+  p(0) = 1
+  val primes = Euler.primeList(1000).toList.map(_.toInt)
+  for (n <- primes; i <- n until p.length)
+    p(i) += p(i-n)
+  println(p.zipWithIndex.find(_._1 > 5000).get._2)
 }
