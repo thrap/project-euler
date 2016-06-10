@@ -9,7 +9,7 @@ public class Problem209 {
     private static int N = 6;
     private static long[] lists = new long[1 << N];
     public static void main(String[] args) {
-        T t = new T();
+        T t = old T();
         for (int i = 0; i < (1<<N); i++) {
             int j = (i>>(N-3))&(i>>(N-2))&1^(i>>(N-1))+(((1<<(N-1))-1)&i)*2;
             lists[Math.min(i, j)] |= 1L << Math.max(i, j);
