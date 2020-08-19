@@ -1,10 +1,11 @@
 *.class
 .classpath
 .settings/*
+venv/
 # Package Files #
 *.jar
 *.war
 *.ear
 out/
 .idea/
-euler.iml
+*.iml
