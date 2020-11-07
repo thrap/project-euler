@@ -11,85 +11,64 @@ fun main() {
     val t = T()
     println(S(2, 2) * S(5, 4))
 
-    val n = 5
-    println(D(n))
+    println(D(5))
+    println(D(10))
 
     println(S(10))
     println(S(100).mod((1000000007).toBigInteger()))
     println(332792866)
 
-    println(S(500))
-    println(246899395470)
+    println(S(2000).mod((1000000007).toBigInteger()))
+    println(939425731)
     println(t)
+
 }
 
-fun S(n: Int): BigInteger = (n downTo 1).sumOf { k -> D(k) }
+private typealias Factors = Map<Int, Int>
 
-fun S(p: Int, k: Int): BigInteger = S(p.toBigInteger(), k.toBigInteger())
+private fun List<Factors>.product(): Factors {
+    return reduce { acc, map -> acc * map }
+}
 
-// https://www.math.upenn.edu/~deturck/m170/wk3/lecture/sumdiv.html
-fun S(p: BigInteger, k: BigInteger): BigInteger = (p.modPow(k + ONE, (1000000007).toBigInteger()*(p-ONE)) - ONE)/(p - ONE)
+private fun Factors.pow(k: Int): Factors {
+    return mapValues { (_, j) -> j*k }
+}
 
-private fun D(n: Int): BigInteger {
-    if (n % 100 == 0)
-        println(n)
-    val res = HashMap<Int, Int>()
-    for (i in n downTo 0) {
-        val a = facMap(n - i)
-        val b = facMap(i)
-        res.add(facMap(n)).subtract(a).subtract(b)
+operator fun Factors.times(factors: Factors): Factors {
+    val res = HashMap<Int, Int>(this)
+    for ((p, k) in factors) {
+        res[p] = (res[p]?:0) + k
+    }
+    return res
+}
+
+fun S(n: Int): BigInteger = (n downTo 3).sumOf { k -> D(k) } + (4).toBigInteger()
+
+fun D(n: Int): BigInteger {
+    // (n!)^(n-1)
+    val numerator: Factors = (2..n).map { factors(it) }.product().pow(n-1)
+
+    //HELE DENNE KAN REDUSERES SOM JULING
+    // (n-1)^2 * (n-2)^4 * (n-3)^6 * ... * 2^(2*(n-2))
+    val denominator = ((n - 1) downTo 2).mapIndexed { index, i -> factors(i).pow((index + 1) * 2) }.product()
+
+    if (n == 10) {
+        println(numerator)
+        println(denominator)
+        println(numerator.mapValues { (p, k) -> k - (denominator[p] ?: 0)})
     }
 
-    return res.entries.fold(ONE) { acc, (p, k) -> acc * S(p, k) } % (1000000007).toBigInteger()
+    return numerator.entries.fold(ONE) { acc, (p, k) -> (acc * S(p, k - (denominator[p] ?: 0))) % (1000000007).toBigInteger()}
 }
 
-val memo = HashMap<Int, Map<Int, Int>>()
-private fun facMap(i: Int): Map<Int, Int> {
-    if (memo[i] != null) {
-        return memo[i]!!
-    }
-    val primeFactorMap = primeFactorMap((0..i).toList())
-    memo[i] = primeFactorMap
-    return primeFactorMap
-}
 
-private fun MutableMap<Int, Int>.subtract(a: Map<Int, Int>): MutableMap<Int, Int> {
-    for((x, y) in a) {
-        this[x] = (this[x]?:0) - y
-    }
-    return this
-}
+private fun S(p: Int, k: Int): BigInteger = S(p.toBigInteger(), k.toBigInteger())
 
-private fun MutableMap<Int, Int>.add(a: Map<Int, Int>): MutableMap<Int, Int> {
-    for((x, y) in a) {
-        if (y != 0)
-            this[x] = (this[x]?:0) + y
-    }
-    return this
-}
+private fun S(p: BigInteger, k: BigInteger): BigInteger = (p.modPow(k + ONE, (1000000007).toBigInteger()*(p-ONE)) - ONE)/(p - ONE)
 
-private fun Int.pow(k: Int): Long {
-    return this.toBigInteger().pow(k).toLong()
-}
+private val primeFactorMap = HashMap<Int, Map<Int, Int>>()
 
-fun primeFactorMap(numbers: List<Int>): MutableMap<Int, Int> {
-    val factors: MutableMap<Int, Int> = HashMap()
-    for (number in numbers) {
-        val numberFactors = mutableMap(number)
-        for ((key, value) in numberFactors) {
-            if (factors.containsKey(key)) {
-                factors[key] = value + factors[key]!!
-            } else {
-                factors[key] = value
-            }
-        }
-    }
-    return factors
-}
-
-val primeFactorMap = HashMap<Int, Map<Int, Int>>()
-
-private fun mutableMap(i: Int): Map<Int, Int> {
+private fun factors(i: Int): Factors {
     if (primeFactorMap[i] != null)
         return primeFactorMap[i]!!
     val map = Euler.primeFactorMap(i)
